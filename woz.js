@@ -97,7 +97,8 @@ var handlers = {
 	// current system task `service`, `car_selection`, ...
 	"status" : setState,
 	
-	// 
+	// is the `backwards button`
+	"backward_button": setBackwards
 };
 
 function setState(response) {
@@ -105,6 +106,11 @@ function setState(response) {
 	var sys_status = src.innerHTML;
 	
 	put(response, {"src" : src, "status" : sys_status});
+}
+
+function setBackwards(response) {
+	var checked = document.getElementById("showBackwardButton").checked;
+	put(response, {"backward_button" : checked});
 }
 
 function setAnimal(response) {
