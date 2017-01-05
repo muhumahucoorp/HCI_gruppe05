@@ -72,14 +72,13 @@ var handlers = {
 	"status" : updateState,
 	
 	// is the `backwards button`
-	"backward_button": updateBackwards/*,
+	"backward_button": updateBackwards,
 	
 	// highlighted car number
-	"car_choose" : setChoosenCarNumber,
+	"car_choose" : updateChoosenCarNumber,
 	
 	// pary features
-	"party_feature" : setPartyFeatures
-	*/
+	"party_feature" : updatePartyFeatures
 };
 
 function updateState(response) {
@@ -91,7 +90,6 @@ function updateState(response) {
 	
 	//TODO hier änderung von html
 	
-	
 }
 
 function updateBackwards(response) {
@@ -102,24 +100,18 @@ function updateBackwards(response) {
 	}
 }
 
-/*
-function updateAnimal(response) {
-	document.getElementById(response._id).src = response.src;
-	document.getElementById(response._id).width = response.width;
+function updateChoosenCarNumber(response) {
+	//TODO implement and update id
+	var car_div = document.getElementById("cars");
+	if (car_div) {
+		// highlight selected car
+	}
 }
 
-function updateCounter(response) {
-	document.getElementById(response._id).innerHTML =
-		showCounter ? response.value : "";
+function updatePartyFeatures(response) {
+	//TODO implement and update id
+	var feature_div = document.getElementById("feature");
+	if (feature_div) {
+		// insert selected features
+	}
 }
-
-var showCounter = true;
-
-function showCounter(response) {
-	showCounter = response.checked;
-}
-
-function updateText(response) {
-	document.getElementById("mytext").innerHTML = response.value;
-}
-*/
