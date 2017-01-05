@@ -8,8 +8,19 @@
 <h1>Wizard of Oz Control Interface</h1>
 
 <form>
-  <input type="button" value="Create DB" id="counter" onclick="createDB();"><br/>
+	<input type="button" value="Create DB" id="counter" onclick="createDB();"><br/>
 </form> 
+
+<form>
+	<select id="status" size="6" onchange="set('status');">
+		<option selected>Service</option>
+		<option>Ort und Zeit</option>
+		<option>Fahrzeugtyp</option>
+		<option>Fahrzeugwahl</option>
+		<option>Bestellübersicht</option>
+		<option>Zusatzfeatures</option>
+	</select>
+</from>
 
 <form>
   <!-- http://www.w3schools.com/tags/ref_eventattributes.asp -->
