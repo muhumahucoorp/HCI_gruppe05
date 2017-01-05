@@ -1,0 +1,52 @@
+body {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.example-div1{
+	background-color: yellow;
+	min-width: 600px;
+	min-height: 200px;
+}
+
+.example-div2 {
+	background-color: yellow;
+	min-width: 600px;
+	min-height: 400px;
+}
+
+.header {
+	display: flex;
+	position: relative;
+	height: 120px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+	align-items: left;
+	background-color: red;
+}
+
+.main {
+	display: flex;
+	position: relative;
+	justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.flex-col {
+	display: flex;
+	position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.logo {
+
+	margin: 10px;
+	max-width: 120px;
+	max-height: 360px;
+
+}
