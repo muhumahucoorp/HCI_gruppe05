@@ -6,15 +6,19 @@ body {
 	background-repeat: no-repeat;
 }
 
+h1 {
+	max-height: 20px;
+}
+
 .example-div1{
 	background-color: yellow;
-	min-width: 600px;
+	min-width: 500px;
 	min-height: 200px;
 }
 
 .example-div2 {
 	background-color: yellow;
-	min-width: 600px;
+	min-width: 500px;
 	min-height: 400px;
 }
 
@@ -31,7 +35,7 @@ body {
 .main {
 	display: flex;
 	position: relative;
-	justify-content: center;
+	justify-content: left;
     flex-direction: row;
     flex-wrap: nowrap;
 }
@@ -43,10 +47,25 @@ body {
     flex-wrap: nowrap;
 }
 
+.arrow {
+       width: 200px; 
+       height: 50px; 
+	   text-align: center;
+       background-image: url("arrow.png");
+ }
+
 .logo {
 
 	margin: 10px;
 	max-width: 120px;
 	max-height: 360px;
 
+}
+
+.backbutton {
+	min-width: 200px;
+	min-height: 100px;
+	background-image: url("back.png");
+	text-align: right;
+    background-repeat: no-repeat;
 }
