@@ -101,7 +101,10 @@ var handlers = {
 	"backward_button": setBackwards,
 	
 	// highlighted car number
-	"car_choose" : setChoosenCarNumber
+	"car_choose" : setChoosenCarNumber,
+	
+	// pary features
+	"party_feature" : setPartyFeatures 
 };
 
 function setState(response) {
@@ -126,6 +129,13 @@ function setChoosenCarNumber(response) {
 	console.log("car state " + car_state); 
 	put(response, {"src" : src, "status" : car_state});
 }
+
+function setPartyFeatures(response) {
+	var src = document.getElementById("feature_box");
+	var feature = src.value;
+	
+	put(response, {"src" : src, "feature" : feature});
+}	
 
 /*
 function setAnimal(response) {
