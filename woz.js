@@ -113,7 +113,7 @@ function setState(response) {
 	
 	var sys_state = src.options[index].text;
 	console.log("gui tab " + sys_state); 
-	put(response, {"src" : src, "status" : sys_state});
+	put(response, {"src" : src, "state" : sys_state});
 }
 
 function setBackwards(response) {
@@ -164,5 +164,3 @@ function mytext(response) {
 	put(response, {"value" : value});
 }
 */
-
-

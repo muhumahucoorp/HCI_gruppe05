@@ -68,13 +68,26 @@ var intervalID = setInterval(update, 200);
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-	"animal" : updateAnimal,
-	"showCounter" : showCounter,
-	"counter" : updateCounter,
-	"mytext" : updateText,
-	// add further handlers here
+	// current system task `service`, `car_selection`, ...
+	"status" : updateState/*,
+	
+	// is the `backwards button`
+	"backward_button": setBackwards,
+	
+	// highlighted car number
+	"car_choose" : setChoosenCarNumber,
+	
+	// pary features
+	"party_feature" : setPartyFeatures
+	*/
 };
 
+function updateState(response) {
+	document.getElementById("taskbar").innerHTML = response.status;
+}
+
+
+/*
 function updateAnimal(response) {
 	document.getElementById(response._id).src = response.src;
 	document.getElementById(response._id).width = response.width;
@@ -94,6 +107,4 @@ function showCounter(response) {
 function updateText(response) {
 	document.getElementById("mytext").innerHTML = response.value;
 }
-
-
-
+*/
