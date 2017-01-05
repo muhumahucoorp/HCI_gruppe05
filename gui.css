@@ -35,7 +35,7 @@ h1 {
 .main {
 	display: flex;
 	position: relative;
-	justify-content: left;
+	justify-content: center;
     flex-direction: row;
     flex-wrap: nowrap;
 }
