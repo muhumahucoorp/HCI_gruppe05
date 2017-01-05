@@ -68,7 +68,6 @@ var intervalID = setInterval(update, 200);
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-<<<<<<< HEAD
 	"animal" : updateAnimal,
 	"showCounter" : showCounter,
 	"counter" : updateCounter,
@@ -98,23 +97,3 @@ function updateText(response) {
 
 
 
-=======
-	"tileBox" : updateTileBox,
-	// add further handlers here
-};
-
-/*
-function updateAnimal(response) {
-	document.getElementById(response._id).src = response.src;
-	document.getElementById(response._id).width = response.width;
-}*/
-
-/**
-  * This function should create a Box with tiles.
-  * The Box is build up like a FlexBox and build from all
-  * Elements in `elementList`.
-  */
-function createTileBox(elementList) {
-    //TODO
-}
->>>>>>> 550b52c40e322542668949104f3d29424c0f661f
