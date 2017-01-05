@@ -101,16 +101,18 @@ function updateState(response) {
 		return arrow_html;
 	}
 	
-	if (states.indexOf(response.state) == -1) {
-		states.push(response.state);
-	} else {
-		var len = states.length;
-		for (let i = 0; i < len; i++) {
-			var cur_state = states[i];
-			if (states.indexOf(cur_state) > states.indexOf(response.state)) {
-				states.splice(states.indexOf(cur_state), 1);
+	if (response.state != "Endübersicht") {
+		if (states.indexOf(response.state) == -1) {
+			states.push(response.state);
+		} else {
+			var len = states.length;
+			for (let i = 0; i < len; i++) {
+				var cur_state = states[i];
+				if (states.indexOf(cur_state) > states.indexOf(response.state)) {
+					states.splice(states.indexOf(cur_state), 1);
+				}
+				len = states.length;
 			}
-			len = states.length;
 		}
 	}
 	
@@ -143,7 +145,7 @@ function changeGui(state) {
 			// Blah
 			break;
 		case "Endübersicht":	
-			var htmlCode = '';
+			var htmlCode = '<h1 align="center" style="color:#1D30A9;font-size:30pt">Vielen Dank</h1><h1 align="center" style="color:#1D30A9;font-size:26pt">für Ihre Bestellung!</h1><div align="center">	<img src="porsche.jpg" style="width:500px;height:300px"><button type="button" class="button">Fertig</button></div>';
 			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
 			break;
 		default:
