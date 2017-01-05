@@ -78,7 +78,10 @@ var handlers = {
 	"car_choose" : updateChoosenCarNumber,
 	
 	// pary features
-	"party_feature" : updatePartyFeatures
+	"party_feature" : updatePartyFeatures,
+	
+	// order view
+	"order_view": updateOrderView
 };
 
 function updateState(response) {
@@ -114,4 +117,8 @@ function updatePartyFeatures(response) {
 	if (feature_div) {
 		// insert selected features
 	}
+}
+
+function updateOrderView(response) {
+	//TODO
 }

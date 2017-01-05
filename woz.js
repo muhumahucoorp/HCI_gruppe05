@@ -104,7 +104,10 @@ var handlers = {
 	"car_choose" : setChoosenCarNumber,
 	
 	// pary features
-	"party_feature" : setPartyFeatures 
+	"party_feature" : setPartyFeatures,
+	
+	// order view
+	"order_view": setOrderView
 };
 
 function setState(response) {
@@ -136,6 +139,12 @@ function setPartyFeatures(response) {
 	
 	put(response, {"src" : src, "feature" : feature});
 }	
+
+function setOrderView(response) {
+
+	
+	
+}
 
 /*
 function setAnimal(response) {
