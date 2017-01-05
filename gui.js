@@ -88,8 +88,11 @@ function updateState(response) {
 		service += " " + response.state;
 	}
 	document.getElementById("service").innerHTML = service;
+	
+	//TODO hier änderung von html
+	
+	
 }
-
 
 /*
 function updateAnimal(response) {
