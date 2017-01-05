@@ -186,12 +186,9 @@ function changeGui(state) {
 }
 
 function updateBackwards(response) {
-	if (document.getElementById("back")) {
-		if (response.backward_button == 0) {
-			document.getElementById("back").style.visibility = "hidden";
-		} else {
-			document.getElementById("back").style.visibility = "visible";
-		}
+	document.getElementById("back").style.visibility = "hidden";
+	if (response.backward_button == 1) {
+		document.getElementById("back").style.visibility = "visible";
 	}
 }
 
