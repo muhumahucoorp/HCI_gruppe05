@@ -7,13 +7,13 @@
 
 <h1>Future Cars Control Interface</h1>
 
-<form>
+<div>
 	<input type="button" value="Create DB" id="counter" onclick="createDB();"><br/>
-</form>
+</div>
 
 <br/>
 
-<form>
+<div style="float: left; margin: 10px;">
 	<div>Seite:</div>
 	<select id="status" size="6" onchange="set('status');">
 		<option selected>Service</option>
@@ -23,17 +23,9 @@
 		<option>Bestellübersicht</option>
 		<option>Zusatzfeatures</option>
 	</select>
-</form>
+</div>
 
-<br/>
-
-<form>
-	<input type="checkbox" id="backward_button" onclick="set('backward_button')">Zurück-Button anzeigen</input>
-</form>
-
-<br/>
-
-<form>
+<div style="margin: 10px;">
 	<div>Autowahl:</div>
 	<select id="car_choose" size="5" onchange="set('car_choose');">
 		<option selected>None</option>
@@ -42,15 +34,51 @@
 		<option>3</option>
 		<option>4</option>
 	</select>
-</from>
+<div>
+
+<div style="margin: 10px;">
+	<input type="checkbox" id="backward_button" onclick="set('backward_button')">Zurück-Button anzeigen</input>
+</div>
 
 <br/>
-<br/>
 
-<form>
+<div style="margin: 10px;">
 	<div>Party-Features:</div>
 	<input id="party_feature" onchange="set('party_feature')">
-</form>
+</div>
+
+<br/>
+
+<div style="margin: 10px;">
+	<div>Bestellübersicht Eingaben:</div>
+	<div>
+		<div style="margin: 4px;">Service:<input id="service"></div>
+		<div>
+			<div style="float: left; margin: 4px;">Zeitraum:</div>
+			<div style="float: left; margin-left: 4px; margin-right: 2px;">
+				<div><div>Abfahrt:</div><input id="time_departure"></div>
+			</div>
+			<div style="margin: 4px;">
+				<div><div>Ankunft:</div><input id="time_arrival"></div>
+			</div>
+		</div>
+		<div>
+			<div style="float: left;">Ort:</div>
+			<div style="float: left; margin-left: 2px; margin-right: 2px;">
+				<div><div>Abfahrt:</div><input id="loc_departure"></div>
+			</div>
+			<div style="margin: 4px;">
+				<div><div>Ankunft:</div><input id="loc_arrival"></div>
+			</div>
+		</div>
+		<div style="margin: 4px;">Fahrzeug:<input id="car"></div>
+		<div style="margin: 4px;">Extras:<input id="extra"></div>
+		<div>
+			<span>Bezahlmethode:<input id="pay_method"></span>
+			<span>Preis:<input id="price"></span>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

@@ -77,11 +77,12 @@ var handlers = {
 	// highlighted car number
 	"car_choose" : updateChoosenCarNumber,
 	
+	/*
 	// pary features
 	"party_feature" : updatePartyFeatures,
 	
 	// order view
-	"order_view": updateOrderView
+	"order_view": updateOrderView*/
 };
 
 function updateState(response) {
@@ -91,23 +92,22 @@ function updateState(response) {
 	}
 	document.getElementById("service").innerHTML = service;
 	
-	changeGui(response);
-	
+	changeGui(response);	
 }
 
-function changeGui(response){
-	
-	switch (response) {
+function changeGui(response) {
+
+	switch (response.state) {
     case "Ort und Zeit":
-        
+	
 		var htmlCode = '<div id="zeitraum" ><label id=zeitLabel >Zeitraum <input >   <input>             </label></div><div id="startpunkt" ><label id=startLabel >Startpunkt <input >   <input>             </label></div><div id="zielpunkt" ><label id=zielLabel >Zielpunkt <input >   <input>             </label></div>';
-		document.getElementsByClassName('main').innerHTML = htmlCode;
+		document.getElementsByClassName('main')[0].innerHTML = htmlCode;
 		
         break;
     case "Fahrzeugtyp":
         
-		var htmlCode = '<img src="sportwagen.png" style="width:304px;height:228px;"><img src="transportwagen.jpg" style="width:304px;height:228px;"><br><img src="familienwagen.jpg" style="width:304px;height:228px;"><img src="arbeitswagen.jpg" style="width:304px;height:228px;">':
-		document.getElementsByClassName('main').innerHTML = htmlCode;
+		var htmlCode = '<img src="sportwagen.png" style="width:304px;height:228px;"><img src="transportwagen.jpg" style="width:304px;height:228px;"><br><img src="familienwagen.png" style="width:304px;height:228px;"><img src="arbeitswagen.jpg" style="width:304px;height:228px;">';
+		document.getElementsByClassName('main')[0].innerHTML = htmlCode;
 		
 		
         break;
@@ -133,10 +133,12 @@ function changeGui(response){
 
 
 function updateBackwards(response) {
-	if (response.backward_button == 0) {
-		document.getElementById("back").style.visibility = "hidden";
-	} else {
-		document.getElementById("back").style.visibility = "visible";
+	if (document.getElementById("back")) {
+		if (response.backward_button == 0) {
+			document.getElementById("back").style.visibility = "hidden";
+		} else {
+			document.getElementById("back").style.visibility = "visible";
+		}
 	}
 }
 
