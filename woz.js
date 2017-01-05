@@ -141,9 +141,19 @@ function setPartyFeatures(response) {
 }	
 
 function setOrderView(response) {
-
-	
-	
+	put(response,
+	{
+		"src" : src,
+		"service" : document.getElementById("service").value,
+		"time_departure": document.getElementById("time_departure").value,
+		"time_arrival": document.getElementById("time_arrival").value,
+		"loc_departure": document.getElementById("loc_departure").value,
+		"loc_arrival": document.getElementById("loc_arrival").value,
+		"car": document.getElementById("car").value,
+		"extra": document.getElementById("extra").value,
+		"pay_method": document.getElementById("pay_method").value,
+		"price": document.getElementById("price").value
+	});
 }
 
 /*
