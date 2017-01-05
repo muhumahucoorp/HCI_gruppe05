@@ -69,10 +69,10 @@ var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
 	// current system task `service`, `car_selection`, ...
-	"status" : updateState/*,
+	"status" : updateState,
 	
 	// is the `backwards button`
-	"backward_button": setBackwards,
+	"backward_button": updateBackwards/*,
 	
 	// highlighted car number
 	"car_choose" : setChoosenCarNumber,
@@ -92,6 +92,14 @@ function updateState(response) {
 	//TODO hier änderung von html
 	
 	
+}
+
+function updateBackwards(response) {
+	if (response.backward_button == 0) {
+		document.getElementById("back").style.visibility = "hidden";
+	} else {
+		document.getElementById("back").style.visibility = "visible";
+	}
 }
 
 /*
