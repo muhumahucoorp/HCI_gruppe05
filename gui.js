@@ -128,12 +128,10 @@ function changeGui(state) {
 		case "Ort und Zeit":
 			var htmlCode = '<div id="zeitraum" ><label id=zeitLabel >Zeitraum <input >   <input>             </label></div><div id="startpunkt" ><label id=startLabel >Startpunkt <input >   <input>             </label></div><div id="zielpunkt" ><label id=zielLabel >Zielpunkt <input >   <input>             </label></div>';
 			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
-			
 			break;
 		case "Fahrzeugtyp":
 			var htmlCode = '<img src="sportwagen.png" style="width:304px;height:228px;"><img src="transportwagen.jpg" style="width:304px;height:228px;"><br><img src="familienwagen.png" style="width:304px;height:228px;"><img src="arbeitswagen.jpg" style="width:304px;height:228px;">';
 			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
-			
 			break;	
 		case "Fahrzeugwahl":
 			// Blah
@@ -143,6 +141,10 @@ function changeGui(state) {
 			break;
 		case "Zusatzfeatures":
 			// Blah
+			break;
+		case "Endübersicht":	
+			var htmlCode = '';
+			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
 			break;
 		default:
 			break;	
