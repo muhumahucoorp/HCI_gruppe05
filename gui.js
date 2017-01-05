@@ -85,52 +85,69 @@ var handlers = {
 	"order_view": updateOrderView*/
 };
 
+var states = [];
+
 function updateState(response) {
-	var service = document.getElementById("service").innerHTML;
+	/*var service = document.getElementById("service").innerHTML;
 	if (service.indexOf(response.state) == -1) {
 		service += " " + response.state;
 	}
-	document.getElementById("service").innerHTML = service;
+	document.getElementById("service").innerHTML = service;*/
 	
-	changeGui(response);	
+	function getArrowHTML(state) {
+		var arrow_html = "<img src=\"arrows\\";
+		arrow_html += state;
+		arrow_html += ".png\" class=\"arrow\"> ";
+		return arrow_html;
+	}
+	
+	if (states.indexOf(response.state) == -1) {
+		states.push(response.state);
+	} else {
+		var len = states.length;
+		for (let i = 0; i < len; i++) {
+			var cur_state = states[i];
+			if (states.indexOf(cur_state) > states.indexOf(response.state)) {
+				states.splice(states.indexOf(cur_state), 1);
+			}
+			len = states.length;
+		}
+	}
+	
+	document.getElementById("service").innerHTML = "";
+	for (let cur_state of states) {
+		document.getElementById("service").innerHTML += getArrowHTML(cur_state);
+	}
+	
+	changeGui(response.state);	
 }
 
-function changeGui(response) {
+function changeGui(state) {
 
-	switch (response.state) {
-    case "Ort und Zeit":
-	
-		var htmlCode = '<div id="zeitraum" ><label id=zeitLabel >Zeitraum <input >   <input>             </label></div><div id="startpunkt" ><label id=startLabel >Startpunkt <input >   <input>             </label></div><div id="zielpunkt" ><label id=zielLabel >Zielpunkt <input >   <input>             </label></div>';
-		document.getElementsByClassName('main')[0].innerHTML = htmlCode;
-		
-        break;
-    case "Fahrzeugtyp":
-        
-		var htmlCode = '<img src="sportwagen.png" style="width:304px;height:228px;"><img src="transportwagen.jpg" style="width:304px;height:228px;"><br><img src="familienwagen.png" style="width:304px;height:228px;"><img src="arbeitswagen.jpg" style="width:304px;height:228px;">';
-		document.getElementsByClassName('main')[0].innerHTML = htmlCode;
-		
-		
-        break;
-		
+	switch (state) {
+		case "Ort und Zeit":
+			var htmlCode = '<div id="zeitraum" ><label id=zeitLabel >Zeitraum <input >   <input>             </label></div><div id="startpunkt" ><label id=startLabel >Startpunkt <input >   <input>             </label></div><div id="zielpunkt" ><label id=zielLabel >Zielpunkt <input >   <input>             </label></div>';
+			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
+			
+			break;
+		case "Fahrzeugtyp":
+			var htmlCode = '<img src="sportwagen.png" style="width:304px;height:228px;"><img src="transportwagen.jpg" style="width:304px;height:228px;"><br><img src="familienwagen.png" style="width:304px;height:228px;"><img src="arbeitswagen.jpg" style="width:304px;height:228px;">';
+			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
+			
+			break;	
 		case "Fahrzeugwahl":
-        // Blah
-        break;
-    case "Bestellübersicht":
-        // Blah
-        break;
-		
+			// Blah
+			break;
+		case "Bestellübersicht":
+			// Blah
+			break;
 		case "Zusatzfeatures":
-        // Blah
-        break;
-	
-	default:
-        
-        break;	
+			// Blah
+			break;
+		default:
+			break;	
+	}
 }
-	
-	
-}
-
 
 function updateBackwards(response) {
 	if (document.getElementById("back")) {
