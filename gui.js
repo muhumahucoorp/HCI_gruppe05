@@ -83,7 +83,11 @@ var handlers = {
 };
 
 function updateState(response) {
-	document.getElementById("taskbar").innerHTML = response.status;
+	var service = document.getElementById("service").innerHTML;
+	if (service.indexOf(response.state) == -1) {
+		service += " " + response.state;
+	}
+	document.getElementById("service").innerHTML = service;
 }
 
 
