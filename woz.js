@@ -143,7 +143,6 @@ function setPartyFeatures(response) {
 function setOrderView(response) {
 	put(response,
 	{
-		"src" : src,
 		"service" : document.getElementById("service").value,
 		"time_departure": document.getElementById("time_departure").value,
 		"time_arrival": document.getElementById("time_arrival").value,
