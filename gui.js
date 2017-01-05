@@ -68,32 +68,57 @@ var intervalID = setInterval(update, 200);
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-	"animal" : updateAnimal,
-	"showCounter" : showCounter,
-	"counter" : updateCounter,
-	"mytext" : updateText,
-	// add further handlers here
+	// current system task `service`, `car_selection`, ...
+	"status" : updateState,
+	
+	// is the `backwards button`
+	"backward_button": updateBackwards,
+	
+	// highlighted car number
+	"car_choose" : updateChoosenCarNumber,
+	
+	// pary features
+	"party_feature" : updatePartyFeatures,
+	
+	// order view
+	"order_view": updateOrderView
 };
 
-function updateAnimal(response) {
-	document.getElementById(response._id).src = response.src;
-	document.getElementById(response._id).width = response.width;
+function updateState(response) {
+	var service = document.getElementById("service").innerHTML;
+	if (service.indexOf(response.state) == -1) {
+		service += " " + response.state;
+	}
+	document.getElementById("service").innerHTML = service;
+	
+	//TODO hier änderung von html
+	
 }
 
-function updateCounter(response) {
-	document.getElementById(response._id).innerHTML =
-		showCounter ? response.value : "";
+function updateBackwards(response) {
+	if (response.backward_button == 0) {
+		document.getElementById("back").style.visibility = "hidden";
+	} else {
+		document.getElementById("back").style.visibility = "visible";
+	}
 }
 
-var showCounter = true;
-
-function showCounter(response) {
-	showCounter = response.checked;
+function updateChoosenCarNumber(response) {
+	//TODO implement and update id
+	var car_div = document.getElementById("cars");
+	if (car_div) {
+		// highlight selected car
+	}
 }
 
-function updateText(response) {
-	document.getElementById("mytext").innerHTML = response.value;
+function updatePartyFeatures(response) {
+	//TODO implement and update id
+	var feature_div = document.getElementById("feature");
+	if (feature_div) {
+		// insert selected features
+	}
 }
 
-
-
+function updateOrderView(response) {
+	//TODO
+}

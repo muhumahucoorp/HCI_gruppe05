@@ -104,7 +104,10 @@ var handlers = {
 	"car_choose" : setChoosenCarNumber,
 	
 	// pary features
-	"party_feature" : setPartyFeatures 
+	"party_feature" : setPartyFeatures,
+	
+	// order view
+	"order_view": setOrderView
 };
 
 function setState(response) {
@@ -113,7 +116,7 @@ function setState(response) {
 	
 	var sys_state = src.options[index].text;
 	console.log("gui tab " + sys_state); 
-	put(response, {"src" : src, "status" : sys_state});
+	put(response, {"src" : src, "state" : sys_state});
 }
 
 function setBackwards(response) {
@@ -136,6 +139,12 @@ function setPartyFeatures(response) {
 	
 	put(response, {"src" : src, "feature" : feature});
 }	
+
+function setOrderView(response) {
+
+	
+	
+}
 
 /*
 function setAnimal(response) {
@@ -164,5 +173,3 @@ function mytext(response) {
 	put(response, {"value" : value});
 }
 */
-
-
