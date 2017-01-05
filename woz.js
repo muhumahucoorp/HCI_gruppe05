@@ -114,12 +114,12 @@ function setState(response) {
 }
 
 function setBackwards(response) {
-	var checked = document.getElementById("showBackwardButton").checked;
+	var checked = document.getElementById("backward_button").checked;
 	put(response, {"backward_button" : checked});
 }
 
 function setChoosenCarNumber(response) {
-	var src = document.getElementById("carChoose");
+	var src = document.getElementById("car_choose");
 	var index = src.selectedIndex;
 	
 	var car_state = src.options[index].text;
