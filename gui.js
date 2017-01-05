@@ -126,7 +126,29 @@ function changeGui(state) {
 
 	switch (state) {
 		case "Ort und Zeit":
-			var htmlCode = '<div id="zeitraum" ><label id=zeitLabel >Zeitraum <input >   <input>             </label></div><div id="startpunkt" ><label id=startLabel >Startpunkt <input >   <input>             </label></div><div id="zielpunkt" ><label id=zielLabel >Zielpunkt <input >   <input>             </label></div>';
+			var htmlCode = '<div style= "display: flex; position: relative; flex-direction: column; flex-wrap: nowrap;">'
+						 + '<div id="zeitraum" style="height: 140px; width: 1000px; display: flex; align-items: center;">'
+						 + '<label id=zeitLabel style = "font-size: 30px;">Zeitraum'
+						 + '<input value="Datum" style="text-align: center; margin-left: 300px;">'
+						 + '<input value="Zeit" style="text-align: center; margin-left: 50px;"> '       
+						 + '<button type="button" style = "margin-left: 50px;"></button>'
+						 + '</label>'
+						 + '</div>'
+						 + '<div id="startpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">'
+						 + '<label id=startLabel style = "font-size: 30px;">Startpunkt'
+						 + '<input value="Stadt" style="text-align: center; margin-left: 285px;">'
+						 + '<input value="Straße" style="text-align: center; margin-left: 50px;">'
+						 + '<button type="button" style="margin-left: 50px;"></button>'
+						 + '</label>'
+						 + '</div>'
+						 + '<div id="zielpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">'
+						 + '<label id=zielLabel style = "font-size: 30px;">Zielpunkt'
+						 + '<input value="Stadt" style="text-align: center; margin-left: 300px;">'
+						 + '<input value="Straße" style="text-align: center; margin-left: 50px;">'
+						 + '<button type="button" style= "margin-left: 50px;"></button>'
+						 + '</label>'
+						 + '</div>';
+						 + '</div>';
 			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
 			
 			break;
