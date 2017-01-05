@@ -52,30 +52,30 @@
 <div style="margin: 10px;">
 	<div>Bestellübersicht Eingaben:</div>
 	<div>
-		<div style="margin: 4px;">Service:<input id="service"></div>
+		<div style="margin: 4px;">Service:<input id="service" onchange="set('order_view')"></div>
 		<div>
 			<div style="float: left; margin: 4px;">Zeitraum:</div>
 			<div style="float: left; margin-left: 4px; margin-right: 2px;">
-				<div><div>Abfahrt:</div><input id="time_departure"></div>
+				<div><div>Abfahrt:</div><input id="time_departure" onchange="set('order_view')"></div>
 			</div>
 			<div style="margin: 4px;">
-				<div><div>Ankunft:</div><input id="time_arrival"></div>
+				<div><div>Ankunft:</div><input id="time_arrival" onchange="set('order_view')"></div>
 			</div>
 		</div>
 		<div>
 			<div style="float: left;">Ort:</div>
 			<div style="float: left; margin-left: 2px; margin-right: 2px;">
-				<div><div>Abfahrt:</div><input id="loc_departure"></div>
+				<div><div>Abfahrt:</div><input id="loc_departure" onchange="set('order_view')"></div>
 			</div>
 			<div style="margin: 4px;">
-				<div><div>Ankunft:</div><input id="loc_arrival"></div>
+				<div><div>Ankunft:</div><input id="loc_arrival" onchange="set('order_view')"></div>
 			</div>
 		</div>
-		<div style="margin: 4px;">Fahrzeug:<input id="car"></div>
-		<div style="margin: 4px;">Extras:<input id="extra"></div>
+		<div style="margin: 4px;">Fahrzeug:<input id="car" onchange="set('order_view')"></div>
+		<div style="margin: 4px;">Extras:<input id="extra" onchange="set('order_view')"></div>
 		<div>
-			<span>Bezahlmethode:<input id="pay_method"></span>
-			<span>Preis:<input id="price"></span>
+			<span>Bezahlmethode:<input id="pay_method" onchange="set('order_view')"></span>
+			<span>Preis:<input id="price" onchange="set('order_view')"></span>
 		</div>
 	</div>
 </div>
