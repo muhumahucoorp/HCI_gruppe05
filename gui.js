@@ -145,7 +145,7 @@ function changeGui(state) {
 			// Blah
 			break;
 		case "Endübersicht":	
-			var htmlCode = '<h1 align="center" style="color:#1D30A9;font-size:30pt">Vielen Dank</h1><h1 align="center" style="color:#1D30A9;font-size:26pt">für Ihre Bestellung!</h1><div align="center">	<img src="porsche.jpg" style="width:500px;height:300px"><button type="button" class="button">Fertig</button></div>';
+			var htmlCode = '<div style="width:1000;height:400"> <h1 align="center" style="color:#1D30A9;font-size:22pt">Vielen Dank</h1><h1 align="center" style="color:#1D30A9;font-size:20pt">für Ihre Bestellung!</h1> <div align="center"><img src="porsche.jpg" style="width:500px;height:300px"><button type="button" class="button">Fertig</button></div>';
 			document.getElementsByClassName('main')[0].innerHTML = htmlCode;
 			break;
 		default:
