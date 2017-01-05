@@ -98,14 +98,19 @@ var handlers = {
 	"status" : setState,
 	
 	// is the `backwards button`
-	"backward_button": setBackwards
+	"backward_button": setBackwards,
+	
+	// highlighted car number
+	"car_choose" : setChoosenCarNumber
 };
 
 function setState(response) {
 	var src = document.getElementById("status");
-	var sys_status = src.innerHTML;
+	var index = src.selectedIndex;
 	
-	put(response, {"src" : src, "status" : sys_status});
+	var sys_state = src.options[index].text;
+	console.log("gui tab " + sys_state); 
+	put(response, {"src" : src, "status" : sys_state});
 }
 
 function setBackwards(response) {
@@ -113,6 +118,16 @@ function setBackwards(response) {
 	put(response, {"backward_button" : checked});
 }
 
+function setChoosenCarNumber(response) {
+	var src = document.getElementById("carChoose");
+	var index = src.selectedIndex;
+	
+	var car_state = src.options[index].text;
+	console.log("car state " + car_state); 
+	put(response, {"src" : src, "status" : car_state});
+}
+
+/*
 function setAnimal(response) {
 	var src = getCheckedRadio("animalImage");
 	var width = parseInt(document.getElementById("animalWidth").value);
@@ -121,7 +136,6 @@ function setAnimal(response) {
 	put(response, {"src" : src, "width" : width});
 }
 
-/*
 function stepCounter(response) {
 	var value = response.value ? response.value : 0;
 	// console.log(value);

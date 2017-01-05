@@ -5,11 +5,13 @@
 </head>
 <body>
 
-<h1>Wizard of Oz Control Interface</h1>
+<h1>Future Cars Control Interface</h1>
 
 <form>
 	<input type="button" value="Create DB" id="counter" onclick="createDB();"><br/>
-</form> 
+</form>
+
+<br/>
 
 <form>
 	<select id="status" size="6" onchange="set('status');">
@@ -20,22 +22,25 @@
 		<option>Bestellübersicht</option>
 		<option>Zusatzfeatures</option>
 	</select>
-</from>
-
-<form>
-  <!-- http://www.w3schools.com/tags/ref_eventattributes.asp -->
-  <input type="radio" name="animalImage" value="cat.jpg" onclick="set('animal');" checked>Cat<br/>
-  <input type="radio" name="animalImage" value="dog.jpg" onclick="set('animal');">Dog<br/>
-  <input type="range" id="animalWidth" min="10" max="500" onchange="set('animal');" oninput="set('animal');"><br/>
-</form> 
+</form>
 
 <br/>
 
 <form>
-  <input type="button" value="Count" id="counter" onclick="set('counter');"><br/>
-  <input type="checkbox" checked id="showCounter" onclick="set('showCounter');">Show counter<br/>
-  <input type="text" name="mytext" id="mytext" oninput="set('mytext')"><br/>
-</form> 
+	<input type="checkbox" onclick="set('backward_button')">Zurück-Button anzeigen</input>
+</form>
+
+<br/>
+
+<form>
+	<select id="car_choose" size="5" onchange="set('car_choose');">
+		<option selected>None</option>
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+	</select>
+</from>
 
 </body>
 </html>
