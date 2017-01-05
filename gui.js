@@ -91,9 +91,46 @@ function updateState(response) {
 	}
 	document.getElementById("service").innerHTML = service;
 	
-	//TODO hier ‰nderung von html
+	changeGui(response);
 	
 }
+
+function changeGui(response){
+	
+	switch (response) {
+    case "Ort und Zeit":
+        
+		var htmlCode = '<div id="zeitraum" ><label id=zeitLabel >Zeitraum <input >   <input>             </label></div><div id="startpunkt" ><label id=startLabel >Startpunkt <input >   <input>             </label></div><div id="zielpunkt" ><label id=zielLabel >Zielpunkt <input >   <input>             </label></div>';
+		document.getElementsByClassName('main').innerHTML = htmlCode;
+		
+        break;
+    case "Fahrzeugtyp":
+        
+		var htmlCode = '<img src="sportwagen.png" style="width:304px;height:228px;"><img src="transportwagen.jpg" style="width:304px;height:228px;"><br><img src="familienwagen.jpg" style="width:304px;height:228px;"><img src="arbeitswagen.jpg" style="width:304px;height:228px;">':
+		document.getElementsByClassName('main').innerHTML = htmlCode;
+		
+		
+        break;
+		
+		case "Fahrzeugwahl":
+        // Blah
+        break;
+    case "Bestell√ºbersicht":
+        // Blah
+        break;
+		
+		case "Zusatzfeatures":
+        // Blah
+        break;
+	
+	default:
+        
+        break;	
+}
+	
+	
+}
+
 
 function updateBackwards(response) {
 	if (response.backward_button == 0) {
