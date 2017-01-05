@@ -29,7 +29,7 @@ h1 {
     flex-direction: row;
     flex-wrap: nowrap;
 	align-items: left;
-	background-color: red;
+	background-color: #09C;
 }
 
 .main {
