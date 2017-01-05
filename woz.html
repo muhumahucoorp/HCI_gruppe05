@@ -15,13 +15,14 @@
 
 <div style="float: left; margin: 10px;">
 	<div>Seite:</div>
-	<select id="status" size="6" onchange="set('status');">
+	<select id="status" size="6" onclick="set('status');">
 		<option selected>Service</option>
 		<option>Ort und Zeit</option>
 		<option>Fahrzeugtyp</option>
 		<option>Fahrzeugwahl</option>
-		<option>Bestellübersicht</option>
 		<option>Zusatzfeatures</option>
+		<option>Bestellübersicht</option>
+		<option>Endübersicht</option>
 	</select>
 </div>
 
@@ -37,7 +38,7 @@
 <div>
 
 <div style="margin: 10px;">
-	<input type="checkbox" id="backward_button" onclick="set('backward_button')">Zurück-Button anzeigen</input>
+	<input type="checkbox" id="backward_button" onchange="set('backward_button')">Zurück-Button anzeigen</input>
 </div>
 
 <br/>
