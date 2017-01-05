@@ -94,12 +94,18 @@ function createDB() {
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-	"animal" : setAnimal,
-	"counter" : stepCounter,
-	"showCounter" : showCounter,
-	"mytext" : mytext,
-	// add further handlers here
+	// current system task `service`, `car_selection`, ...
+	"status" : setState,
+	
+	// 
 };
+
+function setState(response) {
+	var src = document.getElementById("status");
+	var sys_status = src.innerHTML;
+	
+	put(response, {"src" : src, "status" : sys_status});
+}
 
 function setAnimal(response) {
 	var src = getCheckedRadio("animalImage");
@@ -109,6 +115,7 @@ function setAnimal(response) {
 	put(response, {"src" : src, "width" : width});
 }
 
+/*
 function stepCounter(response) {
 	var value = response.value ? response.value : 0;
 	// console.log(value);
@@ -126,5 +133,6 @@ function mytext(response) {
 	// console.log(value);
 	put(response, {"value" : value});
 }
+*/
 
 
