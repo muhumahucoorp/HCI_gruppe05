@@ -8,6 +8,10 @@ body {
 
 h1 {
 	max-height: 20px;
+    font-family: verdana;
+	font-size: 30px;
+	font-weight: bold;
+    margin-bottom: 25px;
 }
 
 .example-div1{
@@ -17,7 +21,7 @@ h1 {
 }
 
 .example-div2 {
-	background-color: yellow;
+	background-color: green;
 	min-width: 500px;
 	min-height: 400px;
 }
@@ -38,6 +42,7 @@ h1 {
 	justify-content: center;
     flex-direction: row;
     flex-wrap: nowrap;
+    margin: 20px;
 }
 
 .flex-col {
@@ -48,18 +53,22 @@ h1 {
 }
 
 .arrow {
-       width: 200px; 
-       height: 50px; 
-	   text-align: center;
-       background-image: url("arrow.png");
- }
+    width: 200px; 
+    height: 50px; 
+    background-image: url("arrow.png");
+}
+
+.tile-selectable {
+    margin 5px;
+    border: 4px blue;
+    border-style: groove;
+    border-radius: 8px;
+}
 
 .logo {
-
-	margin: 10px;
+	margin: 15px;
 	max-width: 120px;
 	max-height: 360px;
-
 }
 
 .backbutton {
@@ -88,6 +97,7 @@ h1 {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
     text-align: center;
+    margin: 4px;
     color:#1D30A9;
 }
 

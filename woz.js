@@ -103,8 +103,11 @@ var handlers = {
 	// highlighted car number
 	"car_choose" : setChoosenCarNumber,
 	
-	// pary features
+	// party features
 	"party_feature" : setPartyFeatures,
+    
+    // car selection
+    "car_selection" : setCarSelection,
 	
 	// order view
 	"order_view": setOrderView
@@ -115,7 +118,6 @@ function setState(response) {
 	var index = src.selectedIndex;
 	
 	var sys_state = src.options[index].text;
-	console.log("gui tab " + sys_state); 
 	put(response, {"src" : src, "state" : sys_state});
 }
 
@@ -129,8 +131,7 @@ function setChoosenCarNumber(response) {
 	var index = src.selectedIndex;
 	
 	var car_state = src.options[index].text;
-	console.log("car state " + car_state); 
-	put(response, {"src" : src, "status" : car_state});
+	put(response, {"src" : src, "state" : car_state});
 }
 
 function setPartyFeatures(response) {
@@ -139,6 +140,16 @@ function setPartyFeatures(response) {
 	
 	put(response, {"src" : src, "feature" : feature});
 }	
+
+function setCarSelection(response) {
+	var type = document.getElementById("type_choose");
+	var d_type = document.getElementById("driving_type_choose");
+    
+    var typeText = type.options[type.selectedIndex].text;
+    var d_typeText = d_type.options[d_type.selectedIndex].text;
+    
+	put(response, {"type" : typeText, "driving_type" : d_typeText});
+}
 
 function setOrderView(response) {
 	put(response,
@@ -154,31 +165,3 @@ function setOrderView(response) {
 		"price": document.getElementById("price").value
 	});
 }
-
-/*
-function setAnimal(response) {
-	var src = getCheckedRadio("animalImage");
-	var width = parseInt(document.getElementById("animalWidth").value);
-	// console.log(src);
-	// console.log(width);
-	put(response, {"src" : src, "width" : width});
-}
-
-function stepCounter(response) {
-	var value = response.value ? response.value : 0;
-	// console.log(value);
-	put(response, {"value" : value + 1});
-}
-
-function showCounter(response) {
-	var checked = document.getElementById("showCounter").checked;
-	// console.log(checked);
-	put(response, {"checked" : checked});
-}
-
-function mytext(response) {
-	var value = document.getElementById("mytext").value;
-	// console.log(value);
-	put(response, {"value" : value});
-}
-*/

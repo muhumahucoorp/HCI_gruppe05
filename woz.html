@@ -7,15 +7,11 @@
 
 <h1>Future Cars Control Interface</h1>
 
-<div>
-	<input type="button" value="Create DB" id="counter" onclick="createDB();"><br/>
-</div>
-
-<br/>
+<div><input type="button" value="Create DB" id="counter" onclick="createDB();"><br></div>
 
 <div style="float: left; margin: 10px;">
 	<div>Seite:</div>
-	<select id="status" size="6" onclick="set('status');">
+	<select id="status" size="7" onclick="set('status');">
 		<option selected>Service</option>
 		<option>Ort und Zeit</option>
 		<option>Fahrzeugtyp</option>
@@ -39,22 +35,41 @@
 
 <div style="margin: 10px;">
 	<input type="checkbox" id="backward_button" onchange="set('backward_button')">Zurück-Button anzeigen</input>
-</div>
-
-<br/>
+</div><br>
 
 <div style="margin: 10px;">
 	<div>Party-Features:</div>
-	<input id="party_feature" onchange="set('party_feature')">
+	<div>
+        <input id="party_feature">
+        <input type="button" value="+" onclick="set('party_feature')"><br>
+    </div>
+</div><br>
+
+<div style="float: left; margin: 10px;">
+    <div>Fahrzeugtyp:</div>
+	<select id="type_choose" size="5" onchange="set('car_selection');">
+		<option selected>sport</option>
+		<option>transport</option>
+		<option>work</option>
+		<option>family</option>
+		<option>partyBus</option>
+	</select>
 </div>
 
-<br/>
+<div style="margin: 10px; margin-bottom: 80px;">
+	<div>Fahrtyp:</div>
+	<select id="driving_type_choose" size="2" onchange="set('car_selection');">
+		<option selected>Autonom</option>
+		<option>Manual</option>
+	</select>
+</div>
 
-<div style="margin: 10px;">
+<div style="float: bottom; margin: 10px;">
 	<div>Bestellübersicht Eingaben:</div>
-	<div>
-		<div style="margin: 4px;">Service:<input id="service" onchange="set('order_view')"></div>
-		<div>
+	<ul>
+        <label for="service">Service:<input id="service" onchange="set('order_view')"></label>
+		
+        <div>
 			<div style="float: left; margin: 4px;">Zeitraum:</div>
 			<div style="float: left; margin-left: 4px; margin-right: 2px;">
 				<div><div>Abfahrt:</div><input id="time_departure" onchange="set('order_view')"></div>
@@ -78,7 +93,7 @@
 			<span>Bezahlmethode:<input id="pay_method" onchange="set('order_view')"></span>
 			<span>Preis:<input id="price" onchange="set('order_view')"></span>
 		</div>
-	</div>
+	</ul>
 </div>
 
 </body>
