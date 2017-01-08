@@ -93,6 +93,8 @@ function createDB() {
 
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
+var features = [];
+
 var handlers = {
 	// current system task `service`, `car_selection`, ...
 	"status" : setState,
@@ -135,11 +137,24 @@ function setChoosenCarNumber(response) {
 }
 
 function setPartyFeatures(response) {
-	var src = document.getElementById("feature_box");
-	var feature = src.value;
+	var feature = document.getElementById("party_feature").value;
+	var price = document.getElementById("party_feature_price").value;
+    if (price == "") {
+        feature += " 0€/h";
+    } else {
+        feature += " " + price + "€/h";
+    }
+    
+    if (features.indexOf(feature) == -1) {
+        features.push(feature);
+    }
+    
+    var feature_obj = {};
+    var id = 0;
+    for (let f of features) { feature_obj[id++] = f; }
 	
-	put(response, {"src" : src, "feature" : feature});
-}	
+    put(response, {"features" : feature_obj});
+}
 
 function setCarSelection(response) {
 	var type = document.getElementById("type_choose");

@@ -18,7 +18,7 @@
 	<div style="justify-content:center; align-items:center; display:flex; flex-direction:row;">
         <!-- TODO implement tooltip for current selection <label>Info</label> -->
 		<div class="main" class="flex-col"></div>
-		<button id="back" type="button">Zurück</button>
+		<button id="back" type="button" class="button">Zurück</button>
 	</div>
 	
     <!-- Dynamic GUI elements are saved here and used on their GUI state -->
@@ -70,14 +70,19 @@
     </div> 
     
     <!-- Fahrzeugwahl -->
+    <div id="continueCarSelection" style="visibility: hidden">
+        <br>
+        <input class="button" type="button" value="Weiter" style="font-size: 15px; float: right;">
+    </div>
+    
     <div id="partyBus" style="visibility: hidden">
         <div>
         <div class="tile-selectable"><img src="PartyBusImages/partybus1.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Party Schoolbus</label><br><label>Preis : 200 Euro </label></div>
         <div class="tile-selectable"><img src="PartyBusImages/partybus2.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Dark Knight</label><br><label>Preis : 250 Euro </label></div>
         </div><div>
         <div class="tile-selectable"><img src="PartyBusImages/partybus3.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Street Party</label><br><label>Preis : 150 Euro </label></div>
-        <div class="tile-selectable"><img src="PartyBusImages/partybus4.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : MC Hummer</label><br><label>Preis : 300 Euro </label></div>
-        </div>
+        <div class="tile-selectable"><img src="PartyBusImages/partybus4.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : MC Hummer</label><br><label>Preis : 300 Euro </label></div>  
+        </div>  
     </div>
 
     <div id="sportAutonom" style="visibility: hidden">
@@ -157,6 +162,30 @@
     </div>
     
     <div id="Zusatzfeatures" style="visibility: hidden">
+        <div class="flex-col">
+            <div class="flex-row"></div>
+                <div class="feature-div tile-selectable">Getränkeflat<br>10€/h</div>
+                <div class="feature-div tile-selectable">Barkeeper<br>11€/h</div>
+                <div class="feature-div tile-selectable">Whirlpool<br>7€/h</div>
+            </div>
+            <div class="flex-row">
+                <div class="feature-div tile-selectable">Musikanlage<br>5€/h</div>
+                <div class="feature-div tile-selectable">DJ<br>11€/h</div>
+                <div class="feature-div tile-selectable">Raucheffekte<br>5€/h</div>
+            </div>
+            <div class="flex-row">
+                <div class="feature-div tile-selectable">Tänzerinnen<br>12€/h</div>
+                <div class="feature-div tile-selectable">Buffet<br>7€/h</div>
+                <div class="feature-div tile-selectable">Casintotisch<br>5€/h</div>
+            </div>
+            <div class="flex-col">
+                <div id="ordered_features" class="service-div2" style="min-width:200px; margin-left:5px;">
+                    <p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>
+                    -Discokugel 0€/h
+                </div>
+                <input class="button" type="button" value="Weiter" style="margin-top:-10px;">
+            </div>            
+        </div>
     </div>
     
     <div id="Bestellübersicht" style="visibility: hidden">

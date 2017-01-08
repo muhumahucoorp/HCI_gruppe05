@@ -10,7 +10,7 @@
 <div><input type="button" value="Create DB" id="counter" onclick="createDB();"><br></div>
 
 <div style="float: left; margin: 10px;">
-	<div>Seite:</div>
+    <div>Seite:</div>
 	<select id="status" size="7" onclick="set('status');">
 		<option selected>Service</option>
 		<option>Ort und Zeit</option>
@@ -24,7 +24,7 @@
 
 <div style="margin: 10px;">
 	<div>Autowahl:</div>
-	<select id="car_choose" size="5" onchange="set('car_choose');">
+	<select id="car_choose" size="5" onclick="set('car_choose');">
 		<option selected>None</option>
 		<option>1</option>
 		<option>2</option>
@@ -37,17 +37,22 @@
 	<input type="checkbox" id="backward_button" onchange="set('backward_button')">Zurück-Button anzeigen</input>
 </div><br>
 
+<p style="margin:10px;color:orange;">Wizard Info:</p>
+<p style="margin:10px;color:orange;">Auto: Service >> Ort&Zeit >> Fahrzeugtyp >> Fahrzeugwahl >> Bestellübersicht >> Endübersicht</p>
+<p style="margin:10px;color:orange;">Partybus: Service >> Ort&Zeit >> Fahrzeugwahl >> Zusatzfeatures >> Bestellübersicht >> Endübersicht</p><br>
+
 <div style="margin: 10px;">
 	<div>Party-Features:</div>
 	<div>
-        <input id="party_feature">
+        <label>Feature</label> <input id="party_feature">
+        <input id="party_feature_price" style="max-width:20px;"> <label>€/h</label>
         <input type="button" value="+" onclick="set('party_feature')"><br>
     </div>
 </div><br>
 
 <div style="float: left; margin: 10px;">
     <div>Fahrzeugtyp:</div>
-	<select id="type_choose" size="5" onchange="set('car_selection');">
+	<select id="type_choose" size="5" onclick="set('car_selection');">
 		<option selected>sport</option>
 		<option>transport</option>
 		<option>work</option>
@@ -58,7 +63,7 @@
 
 <div style="margin: 10px; margin-bottom: 80px;">
 	<div>Fahrtyp:</div>
-	<select id="driving_type_choose" size="2" onchange="set('car_selection');">
+	<select id="driving_type_choose" size="2" onclick="set('car_selection');">
 		<option selected>Autonom</option>
 		<option>Manual</option>
 	</select>
