@@ -14,16 +14,23 @@ h1 {
     margin-bottom: 25px;
 }
 
-.example-div1{
-	background-color: yellow;
-	min-width: 500px;
-	min-height: 200px;
+.service-div1{
+	background-color: white;
+	min-width: 400px;
+	min-height: 250px;
 }
 
-.example-div2 {
-	background-color: green;
-	min-width: 500px;
-	min-height: 400px;
+.service-div2 {
+	background-color: white;
+	min-width: 400px;
+	min-height: 500px;
+}
+
+.tile-selectable {
+    margin 5px;
+    border: 4px blue;
+    border-style: groove;
+    border-radius: 8px;
 }
 
 .header {
@@ -58,25 +65,19 @@ h1 {
     background-image: url("arrow.png");
 }
 
-.tile-selectable {
-    margin 5px;
-    border: 4px blue;
-    border-style: groove;
-    border-radius: 8px;
-}
-
-.logo {
+#logo {
 	margin: 15px;
 	max-width: 120px;
 	max-height: 360px;
 }
 
-.backbutton {
+#back {
 	min-width: 200px;
 	min-height: 100px;
 	background-image: url("back.png");
 	text-align: right;
     background-repeat: no-repeat;
+    visibility: hidden;
 }
 
 .button {

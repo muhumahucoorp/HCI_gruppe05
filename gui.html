@@ -7,7 +7,7 @@
 <body>
 	<div class="header">
 		<div id="logopanel">
-			<img class="logo" id="logo" src="logo.jpg"></img>
+			<img id="logo" src="logo.jpg"></img>
 		</div>
 		<div class="flex-col">
 			<h1> The Future Is Here! </h1>
@@ -18,17 +18,17 @@
 	<div style="justify-content:center; align-items:center; display:flex; flex-direction:row;">
         <!-- TODO implement tooltip for current selection <label>Info</label> -->
 		<div class="main" class="flex-col"></div>
-		<button id="back" class="backbutton" type="button">Zurück</button>
+		<button id="back" type="button">Zurück</button>
 	</div>
 	
     <!-- Dynamic GUI elements are saved here and used on their GUI state -->
     
     <div id= "Service" style="visibility: hidden">
         <div style ="display:flex; flex-direction:column;">
-            <div class="example-div1">Autonom</div>
-            <div class="example-div1">Manuell</div>
+            <div class="service-div1 tile-selectable">Autonom</div>
+            <div class="service-div1 tile-selectable">Manuell</div>
         </div>
-        <div class="example-div2">Partybus</div>
+        <div class="service-div2 tile-selectable">Partybus</div>
     </div>
     
     <div id= "Ort und Zeit" style="visibility: hidden">
@@ -160,7 +160,7 @@
     </div>
     
     <div id="Bestellübersicht" style="visibility: hidden">
-		<div style="min-width: 1000px; min-height: 400px; max-width: 1000px; max-height: 400px;">
+        <div>
 			<div style="font-size: 32px; margin-left: 50px;"><u>Bestellübersicht:</u></div>
 			<div style="float: left; 
 					min-width: 250px; 
