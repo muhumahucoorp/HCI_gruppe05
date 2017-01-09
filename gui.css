@@ -71,11 +71,24 @@ h1 {
 	min-height: 500px;
 }
 
-.feature-div{
+.feature-div {
     background-color: white;
 	min-width: 200px;
 	min-height: 166px;
     text-align: center;
+}
+
+.overview {
+	font-size: 28px; 
+	margin: 10px;
+}
+
+.overview-input {
+	margin-left: 100px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 20px; 
+	min-width: 250px;
 }
 
 .arrow {
@@ -111,7 +124,6 @@ h1 {
 	border:1px solid #dcdcdc;
 	display:inline-block;
 	cursor:pointer;
-	color:#666666;
     
 	font-family:Arial;
 	font-size:15px;
@@ -127,4 +139,9 @@ h1 {
 
 .button:active {
     box-shadow: 0 0 10px 4px #1D30A9, inset 0 0px 10px #1D30A9;
+}
+
+.combobox {
+	background-color:white;
+	background-image:url(select-arrow.png);
 }

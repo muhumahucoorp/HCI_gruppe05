@@ -192,46 +192,39 @@
     </div>
     
     <div id="Bestellübersicht" style="visibility: hidden">
-        <div>
-			<div style="font-size: 32px; margin-left: 50px;"><u>Bestellübersicht:</u></div>
-			<div style="float: left; 
-					min-width: 250px; 
-					min-height: 250px; 
-					max-width: 250x; 
-					max-height: 250px; 
-					margin-left: 50px; 
-					margin-top: 10px;">
-				<div style="font-size: 28px; margin-top: 10px; margin-bottom: 10px">Service:</div>
-				<div style="font-size: 28px; margin-top: 10px; margin-bottom: 20px;">Zeitraum:</div>
-				<div style="font-size: 28px; margin-top: 10px; margin-bottom: 20px;">Ort:</div>
-				<div style="font-size: 28px; margin-top: 10px; margin-bottom: 10px;">Fahrzeug:</div>
-				<div style="font-size: 28px; margin-top: 10px; margin-bottom: 20px;">Extras:</div>
+        <div class="flex-col" style="">
+			<div>
+			<div style="font-size: 32px;"><u>Bestellübersicht</u></div>
+				<table class="overview">
+					<tr><td>Service:</td>
+						<td><input id="service" class="overview-input"></td></tr>
+					<tr><td>Abfahrtszeit:</td>
+						<td><input id="time_departure" class="overview-input"></td></tr>
+					<tr><td>Ankunftszeit:</td>
+						<td><input id="time_arrival" class="overview-input"></td></tr>
+					<tr><td>Abfahrtsort:</td>
+						<td><input id="place_departure" class="overview-input"></td></tr>
+					<tr><td>Ankunftsort:</td>
+						<td><input id="place_arrival" class="overview-input"></td></tr>
+					<tr><td>Fahrzeug:</td>
+						<td><input id="car" class="overview-input"></td></tr>
+					<tr><td>Extras:</td>
+						<td><input id="extras" class="overview-input"></td></tr>
+					<tr><td>Bezahlmethode:</td>
+						<td id="pay-method" class="combobox">
+							<select class="overview" style="font-size:20px; float:right; margin-right:0px;">
+								<option>PayPal</option>
+								<option>VISA</option>
+								<option>Mastercard</option>
+								<option>Amazon Payments</option>
+							</select>
+						</td></tr>
+					<tr><td>Preis:</td>
+						<td><input id="price" class="overview-input"><td>€</td></td></tr>
+				</table>
 			</div>
-			<div style="min-width: 500px; 
-					min-height: 250px; 
-					max-width: 500x; 
-					max-height: 250px;  
-					margin-top: 10px;">
-				<div style="margin-left: 15px;"><input id="service" style="font-size: 16px; margin-top: 10px; margin-bottom: 10px;"</div>
-				<div style="margin-left: 15px;">
-					<div style="float: left;"><div>Abfahrt:</div><input id="time_departure" style="font-size: 16px; margin-bottom: 10px; margin-right: 50px;"></div>
-					<div><div style="margin-left: 25px;">Ankunft:</div><input id="time_arrival" style="font-size: 16px; margin-bottom: 10px;"></div>
-				</div>
-				<div style="margin-left: 15px;">
-					<div style="float: left;"><div>Abfahrt:</div><input id="loc_departure"  style="font-size: 16px; margin-bottom: 10px; margin-right: 50px;"></div>
-					<div><div style="margin-left: 25px;">Ankunft:</div><input id="loc_arrival" style="font-size: 16px; margin-bottom: 10px;"></div>
-				</div>
-				<div style="margin-left: 15px;"><input id="car" style="font-size: 16px; margin-top: 10px; margin-bottom: 10px;"></div>
-				<div style="margin-left: 15px;"><input id="extra" style="font-size: 16px; margin-top: 10px; margin-bottom: 20px;"></div>
-			</div>
-			<div style="margin-left: 50px;">
-				<span style="font-size: 28px; margin-top: 10px; margin-bottom: 10px;">Bezahlmethode:</span>
-				<span><input id="pay_method" style="font-size: 16px; margin-top: 10px; margin-bottom: 10px; margin-left: 65px;"></span>
-				<span style="font-size: 28px; margin-top: 10px; margin-bottom: 10px; margin-left: 50px; margin-right: 20px;">Preis:</span>
-				<span><input id="price" style="font-size: 16px; margin-top: 10px; margin-bottom: 10px; max-width: 100px;"></span>
-			</div>
-			<div style="margin-right: 50px; float: right; margin-top: 10px;">
-				<input class="button" type="button" value="Bestellung absenden" style="font-size: 15px;">
+			<div>
+				<input class="button" type="button" value="Bestellung absenden" style="float: right;">
 			</div>
 		</div>
     </div>
