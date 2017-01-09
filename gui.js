@@ -162,4 +162,11 @@ function updateCarSelection(response) {
 
 function updateOrderView(response) {
 	document.getElementById("service_text").innerHTML = response.service;
+	document.getElementById("time_departure").innerHTML = response.time_departure;
+	document.getElementById("time_arrival").innerHTML = response.time_arrival;
+	document.getElementById("place_departure").innerHTML = response.loc_departure;
+	document.getElementById("place_arrival").innerHTML = response.loc_arrival;
+	document.getElementById("car_text").innerHTML = response.car;
+	document.getElementById("extras_text").innerHTML = response.extra;
+	document.getElementById("price").innerHTML = response.price;
 }
