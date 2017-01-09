@@ -48,8 +48,8 @@ h1 {
 }
 
 .tile-selectable {
-    margin 5px;
-    border: 4px blue;
+    margin: 5px;
+    border: 6px blue;
     border-style: groove;
     border-radius: 8px;
 }
