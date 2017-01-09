@@ -43,23 +43,23 @@
 
 <div style="margin: 10px;">
 	<div>Party-Features:</div>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Getränkeflat" onchange="set('')">Getränkeflat</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Barkeeper" onchange="set('')">Barkeeper</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Whirlpool" onchange="set('')">Whirlpool</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Musikanlage" onchange="set('')">Musikanlage</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="DJ" onchange="set('')">DJ</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Raucheffekte" onchange="set('')">Raucheffekte</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Tänzer(innen)" onchange="set('')">Tänzer(innen)</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Buffet" onchange="set('')">Buffet</input>
 		<br>
-		<input type="checkbox" id="" onchange="set('')"></input>
+		<input type="checkbox" id="Casinotisch" onchange="set('')">Casinsotisch</input>
 		<br>
 </div><br>
 
@@ -85,25 +85,26 @@
 <div style="float: bottom; margin: 10px;">
 	<div class="flex-col" style="">
 		<div>
-			<div style="font-size: 32px;"><u>Bestellübersicht</u></div>
+			<div><u>Bestellübersicht</u></div>
 				<table class="overview">
 					<tr><td>Service:</td>
-						<td><input id="service" class="overview-input" onchange="set('order_view')"></td></tr>
+						<td><input id="service" class="overview-input"></td></tr>
 					<tr><td>Abfahrtszeit:</td>
-						<td><input id="time_departure" class="overview-input" onchange="set('order_view')"></td></tr>
+						<td><input id="time_departure" class="overview-input"></td></tr>
 					<tr><td>Ankunftszeit:</td>
-						<td><input id="time_arrival" class="overview-input" onchange="set('order_view')"></td></tr>
+						<td><input id="time_arrival" class="overview-input"></td></tr>
 					<tr><td>Abfahrtsort:</td>
-						<td><input id="loc_departure" class="overview-input" onchange="set('order_view')"></td></tr>
+						<td><input id="loc_departure" class="overview-input"></td></tr>
 					<tr><td>Ankunftsort:</td>
-						<td><input id="loc_arrival" class="overview-input" onchange="set('order_view')"></td></tr>
+						<td><input id="loc_arrival" class="overview-input"></td></tr>
 					<tr><td>Fahrzeug:</td>
-						<td><input id="car" class="overview-input" onchange="set('order_view')"></td></tr>
+						<td><input id="car" class="overview-input"></td></tr>
 					<tr><td>Extras:</td>
-						<td><input id="extra" class="overview-input" onchange="set('order_view')"></td></tr>
+						<td><input id="extra" class="overview-input"></td></tr>
 					<tr><td>Preis:</td>
 						<td><input id="price" class="overview-input"><td>€</td></td></tr>
 				</table>
+				<input type="button" value="Bestellung bestätigen" onclick="set('order_view')">
 			</div>
 	</div>
 </div>
