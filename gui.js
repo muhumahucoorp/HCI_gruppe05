@@ -161,5 +161,5 @@ function updateCarSelection(response) {
 }
 
 function updateOrderView(response) {
-	//TODO
+	document.getElementById("service_text").innerHTML = response.service;
 }

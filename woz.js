@@ -176,7 +176,6 @@ function setOrderView(response) {
 		"loc_arrival": document.getElementById("loc_arrival").value,
 		"car": document.getElementById("car").value,
 		"extra": document.getElementById("extra").value,
-		"pay_method": document.getElementById("pay_method").value,
 		"price": document.getElementById("price").value
 	});
 }
