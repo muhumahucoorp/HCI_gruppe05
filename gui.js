@@ -144,11 +144,7 @@ function updateChoosenCarNumber(response) {
 
 function updatePartyFeatures(response) {
 	if (states[states.length-1] == "Zusatzfeatures") {
-        var featuresHTML = '<p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>-Discokugel 0€/h';
-        for (var feature in response.features) {
-            featuresHTML += "<br>-" + response.features[feature];
-        }
-        document.getElementById("ordered_features").innerHTML = featuresHTML;
+        document.getElementById("ordered_features").innerHTML = response.extras;
     }
 }
 
