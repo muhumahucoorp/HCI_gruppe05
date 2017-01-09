@@ -138,22 +138,19 @@ function setChoosenCarNumber(response) {
 
 function setPartyFeatures(response) {
 	var feature = document.getElementById("party_feature").value;
-	var price = document.getElementById("party_feature_price").value;
-    if (price == "") {
-        feature += " 0€/h";
-    } else {
-        feature += " " + price + "€/h";
-    }
-    
-    if (features.indexOf(feature) == -1) {
-        features.push(feature);
-    }
-    
-    var feature_obj = {};
-    var id = 0;
-    for (let f of features) { feature_obj[id++] = f; }
 	
-    put(response, {"features" : feature_obj});
+	if (features.indexOf(feature) == -1) {
+		features.push(feature);
+	} else {
+		feature.splice(features.indexOf(feature), 1);
+	}
+	
+	var extras = '<p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>-Discokugel 0€/h';
+		for (var f in features) {
+			extras += "<br>-" + features[f];
+		}
+	
+	put(response, extras);
 }
 
 function setCarSelection(response) {
