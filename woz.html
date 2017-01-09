@@ -43,11 +43,24 @@
 
 <div style="margin: 10px;">
 	<div>Party-Features:</div>
-	<div>
-        <label>Feature</label> <input id="party_feature">
-        <input id="party_feature_price" style="max-width:20px;"> <label>€/h</label>
-        <input type="button" value="+" onclick="set('party_feature')"><br>
-    </div>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
+		<input type="checkbox" id="" onchange="set('')"></input>
+		<br>
 </div><br>
 
 <div style="float: left; margin: 10px;">
@@ -88,15 +101,6 @@
 						<td><input id="car" class="overview-input" onchange="set('order_view')"></td></tr>
 					<tr><td>Extras:</td>
 						<td><input id="extra" class="overview-input" onchange="set('order_view')"></td></tr>
-					<tr><td>Bezahlmethode:</td>
-						<td id="pay-method" class="combobox">
-							<select class="overview" style="float:right; margin-right:0px;">
-								<option>PayPal</option>
-								<option>VISA</option>
-								<option>Mastercard</option>
-								<option>Amazon Payments</option>
-							</select>
-						</td></tr>
 					<tr><td>Preis:</td>
 						<td><input id="price" class="overview-input"><td>€</td></td></tr>
 				</table>
