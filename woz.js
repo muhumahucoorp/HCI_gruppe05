@@ -142,15 +142,15 @@ function setPartyFeatures(response) {
 	if (features.indexOf(feature) == -1) {
 		features.push(feature);
 	} else {
-		feature.splice(features.indexOf(feature), 1);
+		features.splice(features.indexOf(feature), 1);
 	}
 	
 	var extras = '<p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>-Discokugel 0€/h';
-		for (var f in features) {
-			extras += "<br>-" + features[f];
-		}
+	for (var f of features) {
+		extras += "<br>-" + f;
+	}
 	
-	put(response, extras);
+	put(response, {"extras": extras});
 }
 
 function setCarSelection(response) {
