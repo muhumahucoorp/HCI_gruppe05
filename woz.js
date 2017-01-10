@@ -93,7 +93,6 @@ function createDB() {
 
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
-var features = [];
 
 var handlers = {
 	// current system task `service`, `car_selection`, ...
@@ -137,12 +136,16 @@ function setChoosenCarNumber(response) {
 }
 
 function setPartyFeatures(response) {
-	var feature = document.getElementById("party_feature").value;
+	var features = [];
 	
-	if (features.indexOf(feature) == -1) {
-		features.push(feature);
-	} else {
-		features.splice(features.indexOf(feature), 1);
+	for(let i=1; i<=9; i++) {
+		var feature = document.getElementById("party_feature" + i).value;
+		var isOn = document.getElementById("party_feature" + i).checked;
+		
+		if (features.indexOf(feature) == -1 && isOn) {
+			features.push(feature);
+		}
+		
 	}
 	
 	var extras = '<p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>-Discokugel 0€/h';
