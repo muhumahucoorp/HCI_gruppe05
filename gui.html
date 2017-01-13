@@ -167,27 +167,28 @@
     
     <div id="Zusatzfeatures" style="visibility: hidden">
         <div class="flex-col">
-			<div class="flex-row"></div>
-			<div class="feature-div tile-selectable">Getränkeflat<br>10€/h</div>
-			<div class="feature-div tile-selectable">Barkeeper<br>11€/h</div>
-			<div class="feature-div tile-selectable">Whirlpool<br>7€/h</div>
+			<div class="flex-row">
+				<div class="feature-div tile-selectable" id="Getränkeflat 10€/h" onclick="selectFeature('Getränkeflat 10€/h')">Getränkeflat<br>10€/h</div>
+				<div class="feature-div tile-selectable" id="Barkeeper 11€/h" onclick="selectFeature('Barkeeper 11€/h')">Barkeeper<br>11€/h</div>
+				<div class="feature-div tile-selectable" id="Whirlpool 7€/h" onclick="selectFeature('Whirlpool 7€/h')">Whirlpool<br>7€/h</div>
+			</div>
 		</div>
 		<div class="flex-row">
-			<div class="feature-div tile-selectable">Musikanlage<br>5€/h</div>
-			<div class="feature-div tile-selectable">DJ<br>11€/h</div>
-			<div class="feature-div tile-selectable">Raucheffekte<br>5€/h</div>
+			<div class="feature-div tile-selectable" id="Musikanlage 5€/h" onclick="selectFeature('Musikanlage 5€/h')">Musikanlage<br>5€/h</div>
+			<div class="feature-div tile-selectable" id="DJ 11€/h" onclick="selectFeature('DJ 11€/h')">DJ<br>11€/h</div>
+			<div class="feature-div tile-selectable" id="Raucheffekte 5€/h" onclick="selectFeature('Raucheffekte 5€/h')">Raucheffekte<br>5€/h</div>
 		</div>
 		<div class="flex-row">
-			<div class="feature-div tile-selectable">Tänzerinnen<br>12€/h</div>
-			<div class="feature-div tile-selectable">Buffet<br>7€/h</div>
-			<div class="feature-div tile-selectable">Casintotisch<br>5€/h</div>
+			<div class="feature-div tile-selectable" id="Tänzerinnen 12€/h" onclick="selectFeature('Tänzerinnen 12€/h')">Tänzerinnen<br>12€/h</div>
+			<div class="feature-div tile-selectable" id="Buffet 7€/h" onclick="selectFeature('Buffet 7€/h')">Buffet<br>7€/h</div>
+			<div class="feature-div tile-selectable" id="Casintotisch 5€/h" onclick="selectFeature('Casintotisch 5€/h')">Casintotisch<br>5€/h</div>
 		</div>
 		<div class="flex-col">
 			<div id="ordered_features" class="service-div2" style="min-width:200px; margin-left:5px;">
 				<p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>
 					-Discokugel 0€/h
 			</div>
-			<input class="button" type="button" value="Weiter" style="margin-top:-10px;">
+			<input class="button" type="button" value="Weiter" style="margin-top:-10px;" onclick="updateState()">
 		</div>            
 	</div>
     

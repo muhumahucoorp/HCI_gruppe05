@@ -34,14 +34,19 @@ origins = *
 // your code below
 
 var states = ["Service"];
+var features = ["Discokugel 0€/h"];
 var cur_state = "Service";
-var car_type;
-var car_mode;
+var car_type = "";
+var car_mode = "";
 var selectedCarDivName;
 
 function init() {
 	states = ["Service"];
+	features = ["Discokugel 0€/h"];
 	cur_state = "Service";
+	car_type = "";
+	car_mode = "";
+	document.getElementById("taskbar").innerHTML = getArrowHTML(states);
 	document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 }
 
@@ -49,17 +54,10 @@ window.onload = init;
 
 function updateState() {
 	
-	function getArrowHTML(new_state) {
-		var arrow_html = "<img src=\"arrows\\";
-		arrow_html += new_state;
-		arrow_html += ".png\" class=\"arrow\"> ";
-		return arrow_html;
-	}
-	
 	switch(cur_state) {
-		case "Service" :;
+		case "Service" :
 			cur_state = "Ort und Zeit";
-			updateBackwards();
+			document.getElementById("back").style.visibility = "visible";
 			break;
 		case "Ort und Zeit" :
 			if(car_mode == "partyBus") {
@@ -72,14 +70,21 @@ function updateState() {
 			cur_state = "Fahrzeugwahl";
 			break;
 		case "Fahrzeugwahl" :
-			if(car_mode == partyBus) {
+			if(car_mode == "partyBus") {
 				cur_state = "Zusatzfeatures";
+				var cur_features = "";
+				for(let f of features) {
+					cur_features += f + "<br>";
+				}
+				document.getElementById("extras_text").innerHTML = cur_features;
 			} else {
 				cur_state = "Bestellübersicht";
+				document.getElementById("back").style.visibility = "hidden";
 			}
 			break;
 		case "Zusatzfeatures" :
 			cur_state = "Bestellübersicht";
+			document.getElementById("back").style.visibility = "hidden";
 			break;
 		case "Bestellübersicht" :
 			cur_state = "Endübersicht";
@@ -103,8 +108,16 @@ function updateState() {
 	}
 }
 
+function getArrowHTML(new_state) {
+		var arrow_html = "<img src=\"arrows\\";
+		arrow_html += new_state;
+		arrow_html += ".png\" class=\"arrow\"> ";
+		return arrow_html;
+	}
+
 function updateMode(newMode) {
 	car_mode = newMode;
+	document.getElementById("service_text").innerHTML = car_mode;
 	updateState();
 }
 
@@ -113,54 +126,37 @@ function updateCarType(newType) {
 	updateState();
 }
 
+function selectFeature(feature) {
+	if(features.indexOf(feature) == -1) {
+		document.getElementById(feature).style.borderColor = "red";
+		features.push(feature);
+	} else {
+		document.getElementById(feature).style.borderColor = "blue";
+		features.splice(features.indexOf(feature), 1);
+	}
+	var cur_features = "";
+	for(let f of features) {
+		cur_features += f + "<br>";
+	}
+	document.getElementById("ordered_features").innerHTML = "<p style='font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;'>Ausgewählte Zusatzfeatures</p>" + cur_features;
+}
+
 function selectCar(number) {
+	var buttonShown = false;
 	for(i=1; i<=4; i++) {
+		if(document.getElementById(car_type + car_mode + i).style.borderColor == "red") {
+			buttonShown = true;
+		}
 		document.getElementById(car_type + car_mode + i).style.borderColor = "blue";
 	}
 	document.getElementById(car_type + car_mode + number).style.borderColor = "red";
-	document.getElementById("continueCarSelection").style.visibility = "visible";
-	document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + document.getElementById("continueCarSelection").innerHTML;
-}
-
-function updateBackwards() {
-	if (document.getElementById("back").style.visibility == "hidden") {
-		document.getElementById("back").style.visibility = "visible";
-	} else {
-		document.getElementById("back").style.visibility = "hidden";
+	if(!buttonShown) {
+		document.getElementById("continueCarSelection").style.visibility = "visible";
+		document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + document.getElementById("continueCarSelection").innerHTML;
 	}
 }
 
-function updateChoosenCarNumber() {
-	if (states[states.length-1] == "Fahrzeugwahl") {
-        // Mark car when in car selection.
-        document.getElementsByClassName('tile-selectable')[response.state-1].style.borderColor = "red";
-        
-        // "Weiter" button is shown if a car is selected.
-        if (response.state) {
-            var carHTML = document.getElementsByClassName('main')[0].innerHTML;
-            carHTML = carHTML.substr(0, carHTML.length - 2*("</div>".length) - 1);
-            carHTML += document.getElementById("continueCarSelection").innerHTML + "</div>";
-            document.getElementsByClassName('main')[0].innerHTML = carHTML;
-        }
-    }
-    
-}
-
-function updatePartyFeatures(response) {
-	if (states[states.length-1] == "Zusatzfeatures") {
-        document.getElementById("ordered_features").innerHTML = response.extras;
-    }
-}
-
-function updateCarSelection(response) {
-    if (response.type == "partyBus") {
-        selectedCarDivName = response.type
-    } else {
-        selectedCarDivName = response.type + response.driving_type;
-    }
-}
-
-function updateOrderView(response) {
+/*function updateOrderView(response) {
 	document.getElementById("service_text").innerHTML = response.service;
 	document.getElementById("time_departure").innerHTML = response.time_departure;
 	document.getElementById("time_arrival").innerHTML = response.time_arrival;
@@ -169,4 +165,4 @@ function updateOrderView(response) {
 	document.getElementById("car_text").innerHTML = response.car;
 	document.getElementById("extras_text").innerHTML = response.extra;
 	document.getElementById("price").innerHTML = response.price;
-}
+}*/
