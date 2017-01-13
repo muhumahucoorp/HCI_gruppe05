@@ -33,11 +33,19 @@ origins = *
 ///////////////////////////////////////////////////////////////////////////////
 // your code below
 
-var cur_state = "Service";
-var car_type = "sport";
 var states = ["Service"];
-var car_mode = "Autonom";
+var cur_state = "Service";
+var car_type;
+var car_mode;
 var selectedCarDivName;
+
+function init() {
+	states = ["Service"];
+	cur_state = "Service";
+	document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
+}
+
+window.onload = init;
 
 function updateState() {
 	
@@ -83,7 +91,9 @@ function updateState() {
     // update the taskbar
 	document.getElementById("taskbar").innerHTML = "";
 	for (let s of states) {
-		document.getElementById("taskbar").innerHTML += getArrowHTML(s);
+		if(s != "Endübersicht") {
+			document.getElementById("taskbar").innerHTML += getArrowHTML(s);
+		}
 	}
 	
 	if(cur_state == "Fahrzeugwahl") {

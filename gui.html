@@ -3,12 +3,6 @@
 <head>
 	<link href="gui.css" rel="stylesheet">
 	<script type="text/javascript" src="gui.js"></script>
-	<script type="text/javascript">
-		function init() {
-			document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
-		}
-		window.onload = init;
-	</script>
 </head>
 <body>
 	<div class="header">
@@ -241,7 +235,7 @@
             <h1 align="center" style="color:#1D30A9;font-size:24pt">für Ihre Bestellung!</h1>
             <div align="center">
                 <img src="porsche.jpg" style="width:700px;height:450px">
-                <button type="button" class="button">Fertig</button>
+                <button type="button" class="button" onclick="init()">Fertig</button>
             </div>
         </div>
     </div>
