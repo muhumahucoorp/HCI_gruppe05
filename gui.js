@@ -30,103 +30,97 @@ origins = *
 
 */
 
-var request = new XMLHttpRequest();
-
-request.onreadystatechange = function() {
-	// console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
-	// console.log(request.responseText);
-	if (request.readyState == 4) {
-		if (request.status == 200) {
-			var response = JSON.parse(request.responseText);
-			handlers[response._id](response);
-		}
-		if (request.status == 404) {
-			console.log("not found: " + request.responseText);
-		}
-	}
-};
-
-function get(variable) {
-	// console.log("get " + variable);
-	request.open("GET", dburl + variable, false);
-	request.send();
-}
-
-function update() {
-	for (var name in handlers) {
-		// console.log("updating " + name);
-		get(name);
-	}
-}
-
-// request updates with a fixed interval (ms)
-var intervalID = setInterval(update, 200);
-
 ///////////////////////////////////////////////////////////////////////////////
 // your code below
 
-var dbname = "hci1";
-var dburl = "http://127.0.0.1:5984/" + dbname + "/";
-var handlers = {
-	"status" : updateState,
-	"backward_button": updateBackwards,
-	"car_choose" : updateChoosenCarNumber,
-	"party_feature" : updatePartyFeatures,
-    "car_selection" : updateCarSelection,
-	"order_view": updateOrderView
-};
-
-var states = [];
+var cur_state = "Service";
+var car_type = "sport";
+var states = ["Service"];
+var car_mode = "Autonom";
 var selectedCarDivName;
 
-function updateState(response) {
+function updateState() {
 	
-	function getArrowHTML(state) {
+	function getArrowHTML(new_state) {
 		var arrow_html = "<img src=\"arrows\\";
-		arrow_html += state;
+		arrow_html += new_state;
 		arrow_html += ".png\" class=\"arrow\"> ";
 		return arrow_html;
 	}
 	
-	if (response.state != "Endübersicht") {
-		if (states.indexOf(response.state) == -1) {
-			states.push(response.state);
-		} else {
-			var len = states.length;
-			for (let i = 0; i < len; i++) {
-				var cur_state = states[i];
-				if (states.indexOf(cur_state) > states.indexOf(response.state)) {
-					states.splice(states.indexOf(cur_state), 1);
-				}
-				len = states.length;
+	switch(cur_state) {
+		case "Service" :;
+			cur_state = "Ort und Zeit";
+			updateBackwards();
+			break;
+		case "Ort und Zeit" :
+			if(car_mode == "partyBus") {
+				cur_state = "Fahrzeugwahl";
+			} else {
+				cur_state = "Fahrzeugtyp";
 			}
-		}
+			break;
+		case "Fahrzeugtyp" :
+			cur_state = "Fahrzeugwahl";
+			break;
+		case "Fahrzeugwahl" :
+			if(car_mode == partyBus) {
+				cur_state = "Zusatzfeatures";
+			} else {
+				cur_state = "Bestellübersicht";
+			}
+			break;
+		case "Zusatzfeatures" :
+			cur_state = "Bestellübersicht";
+			break;
+		case "Bestellübersicht" :
+			cur_state = "Endübersicht";
+			break;
 	}
+	
+	states.push(cur_state);
 	
     // update the taskbar
-	document.getElementById("service").innerHTML = "";
-	for (let cur_state of states) {
-		document.getElementById("service").innerHTML += getArrowHTML(cur_state);
+	document.getElementById("taskbar").innerHTML = "";
+	for (let s of states) {
+		document.getElementById("taskbar").innerHTML += getArrowHTML(s);
 	}
 	
-    // update GUI main element
-	if (response.state == "Fahrzeugwahl") {
-        if (selectedCarDivName) {
-            document.getElementsByClassName('main')[0].innerHTML = document.getElementById(selectedCarDivName).innerHTML;
-        }
+	if(cur_state == "Fahrzeugwahl") {
+		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(car_type + car_mode).innerHTML;
 	} else {
-        document.getElementsByClassName('main')[0].innerHTML = document.getElementById(response.state).innerHTML;
-    }
-}
-
-function updateBackwards(response) {
-	document.getElementById("back").style.visibility = "hidden";
-	if (response.backward_button == 1) {
-		document.getElementById("back").style.visibility = "visible";
+		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	}
 }
 
-function updateChoosenCarNumber(response) {
+function updateMode(newMode) {
+	car_mode = newMode;
+	updateState();
+}
+
+function updateCarType(newType) {
+	car_type = newType;
+	updateState();
+}
+
+function selectCar(number) {
+	for(i=1; i<=4; i++) {
+		document.getElementById(car_type + car_mode + i).style.borderColor = "blue";
+	}
+	document.getElementById(car_type + car_mode + number).style.borderColor = "red";
+	document.getElementById("continueCarSelection").style.visibility = "visible";
+	document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + document.getElementById("continueCarSelection").innerHTML;
+}
+
+function updateBackwards() {
+	if (document.getElementById("back").style.visibility == "hidden") {
+		document.getElementById("back").style.visibility = "visible";
+	} else {
+		document.getElementById("back").style.visibility = "hidden";
+	}
+}
+
+function updateChoosenCarNumber() {
 	if (states[states.length-1] == "Fahrzeugwahl") {
         // Mark car when in car selection.
         document.getElementsByClassName('tile-selectable')[response.state-1].style.borderColor = "red";

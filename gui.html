@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="gui.css" rel="stylesheet">
-<script type="text/javascript" src="gui.js"></script>
+	<link href="gui.css" rel="stylesheet">
+	<script type="text/javascript" src="gui.js"></script>
+	<script type="text/javascript">
+		function init() {
+			document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
+		}
+		window.onload = init;
+	</script>
 </head>
 <body>
 	<div class="header">
@@ -11,7 +17,8 @@
 		</div>
 		<div class="flex-col">
 			<h1> The Future Is Here! </h1>
-			<div id="service">Service</div>
+			<div id="taskbar">
+				<img src="arrows\Service.png" class="arrow"></div>
 		</div>
 	</div>
 	
@@ -25,17 +32,17 @@
     
     <div id= "Service" style="visibility: hidden">
         <div style ="display:flex; flex-direction:column;">
-            <div class="service-div1 tile-selectable">Autonom</div>
-            <div class="service-div1 tile-selectable">Manuell</div>
+            <div class="service-div1 tile-selectable" onclick="updateMode('Autonom')">Autonom</div>
+            <div class="service-div1 tile-selectable" onclick="updateMode('Manual')">Manuell</div>
         </div>
-        <div class="service-div2 tile-selectable">Partybus</div>
+        <div class="service-div2 tile-selectable" onclick="updateMode('partyBus')">Partybus</div>
     </div>
     
     <div id= "Ort und Zeit" style="visibility: hidden">
         <div class="flex-col">
             <div style= "display: flex; position: relative; flex-direction: column; flex-wrap: nowrap;">
                 <div id="zeitraum" style="height: 140px; width: 1000px; display: flex; align-items: center;">
-                    <label id=zeitLabel style = "font-size: 30px;">Zeitraum
+                    <label id="zeitLabel" style = "font-size: 30px;">Zeitraum
                         <input value="Datum" style="text-align: center; margin-left: 300px;">
                         <input value="Zeit" style="text-align: center; margin-left: 50px;">      
                         <button type="button" style = "margin-left: 50px;">~</button>
@@ -43,7 +50,7 @@
                 </div>
                 
                 <div id="startpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">
-                    <label id=startLabel style = "font-size: 30px;">Startpunkt
+                    <label id="startLabel" style = "font-size: 30px;">Startpunkt
                         <input value="Stadt" style="text-align: center; margin-left: 285px;">
                         <input value="Straße" style="text-align: center; margin-left: 50px;">
                         <button type="button" style="margin-left: 50px;">0</button>
@@ -51,145 +58,144 @@
                 </div>
                 
                 <div id="zielpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">
-                    <label id=zielLabel style = "font-size: 30px;">Zielpunkt
+                    <label id="zielLabel" style = "font-size: 30px;">Zielpunkt
                         <input value="Stadt" style="text-align: center; margin-left: 300px;">
                         <input value="Straße" style="text-align: center; margin-left: 50px;">
                         <button type="button" style= "margin-left: 50px;">X</button>
                     </label>
                 </div>
             </div>
-            <input type="button" value="Weiter" class="button" style="margin-top:50px;margin-left:850px;float:right;">
+            <input type="button" value="Weiter" class="button" style="margin-top:50px;margin-left:850px;float:right;" onclick="updateState()">
         </div>
     </div>
     
     <div id="Fahrzeugtyp" style="visibility: hidden">
         <div>
-        <img src="CarTypeImages/sportwagen.png" class="tile-selectable" style="width:400px;height:250px;">
-        <img src="CarTypeImages/transportwagen.jpg" class="tile-selectable" style="width:400px;height:250px;">
+        <img src="CarTypeImages/sportwagen.png" class="tile-selectable" style="width:400px;height:250px;" onclick="updateCarType('sport')">
+        <img src="CarTypeImages/transportwagen.jpg" class="tile-selectable" style="width:400px;height:250px;" onclick="updateCarType('transport')">
         <div></div>
-        <img src="CarTypeImages/familienwagen.png" class="tile-selectable" style="width:400px;height:250px;">
-        <img src="CarTypeImages/arbeitswagen.jpg" class="tile-selectable" style="width:400px;height:250px;">
+        <img src="CarTypeImages/familienwagen.png" class="tile-selectable" style="width:400px;height:250px;" onclick="updateCarType('family')">
+        <img src="CarTypeImages/arbeitswagen.jpg" class="tile-selectable" style="width:400px;height:250px;" onclick="updateCarType('work')">
         </div>
     </div> 
     
     <!-- Fahrzeugwahl -->
     <div id="continueCarSelection" style="visibility: hidden">
         <br>
-        <input class="button" type="button" value="Weiter" style="font-size: 15px; float: right;">
+        <input class="button" type="button" value="Weiter" style="font-size: 15px; float: right;" onclick="updateState()">
     </div>
     
     <div id="partyBus" style="visibility: hidden">
         <div>
-        <div class="tile-selectable"><img src="PartyBusImages/partybus1.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Party Schoolbus</label><br><label>Preis : 200 Euro </label></div>
-        <div class="tile-selectable"><img src="PartyBusImages/partybus2.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Dark Knight</label><br><label>Preis : 250 Euro </label></div>
+        <div class="tile-selectable" id="partyBus1" onclick="selectCar('1')"><img src="PartyBusImages/partybus1.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Party Schoolbus</label><br><label>Preis : 200 Euro </label></div>
+        <div class="tile-selectable" id="partyBus2" onclick="selectCar('2')"><img src="PartyBusImages/partybus2.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Dark Knight</label><br><label>Preis : 250 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="PartyBusImages/partybus3.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Street Party</label><br><label>Preis : 150 Euro </label></div>
-        <div class="tile-selectable"><img src="PartyBusImages/partybus4.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : MC Hummer</label><br><label>Preis : 300 Euro </label></div>  
+        <div class="tile-selectable" id="partyBus3" onclick="selectCar('3')"><img src="PartyBusImages/partybus3.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Street Party</label><br><label>Preis : 150 Euro </label></div>
+        <div class="tile-selectable" id="partyBus4" onclick="selectCar('4')"><img src="PartyBusImages/partybus4.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : MC Hummer</label><br><label>Preis : 300 Euro </label></div>  
         </div>
     </div>
 
     <div id="sportAutonom" style="visibility: hidden">
         <div>
-        <div class="tile-selectable"><img src="AutonomCarImages/fisker.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Fisker</label><br><label>Preis : 85 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/motorstorm2000.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : MotorStorm 2000</label><br><label>Preis : 105 Euro </label></div>
+        <div class="tile-selectable" id="sportAutonom1" onclick="selectCar('1')"><img src="AutonomCarImages/fisker.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Fisker</label><br><label>Preis : 85 Euro </label></div>
+        <div class="tile-selectable" id="sportAutonom2" onclick="selectCar('2')"><img src="AutonomCarImages/motorstorm2000.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : MotorStorm 2000</label><br><label>Preis : 105 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="AutonomCarImages/audia9.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Audi A9</label><br><label>Preis : 100 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/porschemissione.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Chevrolet Camaro</label><br><label>Preis : 110 Euro </label></div> 
+        <div class="tile-selectable" id="sportAutonom3" onclick="selectCar('3')"><img src="AutonomCarImages/audia9.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Audi A9</label><br><label>Preis : 100 Euro </label></div>
+        <div class="tile-selectable" id="sportAutonom4" onclick="selectCar('4')"><img src="AutonomCarImages/porschemissione.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Chevrolet Camaro</label><br><label>Preis : 110 Euro </label></div> 
         </div>
     </div>
     <div id="sportManual" style="visibility: hidden">
         <div>
-        <div class="tile-selectable"><img src="ManuelCarImages/porsche911.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Porsche 911</label><br><label>Preis : 85 Euro </label></div>
-        <div class="tile-selectable"><img src="ManuelCarImages/toyotafuture.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Toyota Future</label><br><label>Preis : 105 Euro </label></div>
+        <div class="tile-selectable" id="sportManual1" onclick="selectCar('1')"><img src="ManuelCarImages/porsche911.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Porsche 911</label><br><label>Preis : 85 Euro </label></div>
+        <div class="tile-selectable" id="sportManual2" onclick="selectCar('2')"><img src="ManuelCarImages/toyotafuture.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Toyota Future</label><br><label>Preis : 105 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="ManuelCarImages/audir8.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Audi R8</label><br><label>Preis : 100 Euro </label></div>
-        <div class="tile-selectable"><img src="ManuelCarImages/chevroletcamaro.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Chevrolet Camaro</label><br><label>Preis : 75 Euro </label></div>
+        <div class="tile-selectable" id="sportManual3" onclick="selectCar('3')"><img src="ManuelCarImages/audir8.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Audi R8</label><br><label>Preis : 100 Euro </label></div>
+        <div class="tile-selectable" id="sportManual4" onclick="selectCar('4')"><img src="ManuelCarImages/chevroletcamaro.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Chevrolet Camaro</label><br><label>Preis : 75 Euro </label></div>
         </div>
     </div>
 
     <div id="transportAutonom" style="visibility: hidden">
         <div>
-        <div class="tile-selectable"><img src="AutonomCarImages/nikolautv.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Nikola UTV</label><br><label>Preis : 65 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/nissannv2.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Nissan NV2</label><br><label>Preis : 55 Euro </label></div>
+        <div class="tile-selectable" id="transportAutonom1" onclick="selectCar('1')"><img src="AutonomCarImages/nikolautv.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Nikola UTV</label><br><label>Preis : 65 Euro </label></div>
+        <div class="tile-selectable" id="transportAutonom2" onclick="selectCar('2')"><img src="AutonomCarImages/nissannv2.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Nissan NV2</label><br><label>Preis : 55 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="AutonomCarImages/vwet.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW ET</label><br><label>Preis : 60 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/s-tran.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : S-Tran</label><br><label>Preis : 70 Euro </label></div>
+        <div class="tile-selectable" id="transportAutonom3" onclick="selectCar('3')"><img src="AutonomCarImages/vwet.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW ET</label><br><label>Preis : 60 Euro </label></div>
+        <div class="tile-selectable" id="transportAutonom4" onclick="selectCar('4')"><img src="AutonomCarImages/s-tran.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : S-Tran</label><br><label>Preis : 70 Euro </label></div>
         </div>
     </div>
     <div id="transportManual" style="visibility: hidden">
         <div>
-        <div class="tile-selectable"><img src="ManuelCarImages/cc1.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : CC1</label><br><label>Preis : 70 Euro </label></div>
-        <div class="tile-selectable"><img src="ManuelCarImages/vwtransporter.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Transporter</label><br><label>Preis : 65 Euro </label></div>
+        <div class="tile-selectable" id="transportManual1" onclick="selectCar('1')"><img src="ManuelCarImages/cc1.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : CC1</label><br><label>Preis : 70 Euro </label></div>
+        <div class="tile-selectable" id="transportManual2" onclick="selectCar('2')"><img src="ManuelCarImages/vwtransporter.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Transporter</label><br><label>Preis : 65 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="ManuelCarImages/vwmultivan.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Multivan</label><br><label>Preis : 55 Euro </label></div>
-        <div class="tile-selectable"><img src="ManuelCarImages/citroenberlingo.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Citroen Berlingo</label><br><label>Preis : 40 Euro </label></div>
+        <div class="tile-selectable" id="transportManual3" onclick="selectCar('3')"><img src="ManuelCarImages/vwmultivan.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Multivan</label><br><label>Preis : 55 Euro </label></div>
+        <div class="tile-selectable" id="transportManual4" onclick="selectCar('4')"><img src="ManuelCarImages/citroenberlingo.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Citroen Berlingo</label><br><label>Preis : 40 Euro </label></div>
         </div>
     </div>
     
     <div id="workAutonom" style="visibility: hidden">
         <div>
-        <div class="tile-selectable"><img src="AutonomCarImages/mercedeseq.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : Mercedes EQ</label><br><label>Preis : 60 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/t.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Toroidion</label><br><label>Preis : 65 Euro </label></div>
+        <div class="tile-selectable" id="workAutonom1" onclick="selectCar('1')"><img src="AutonomCarImages/mercedeseq.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : Mercedes EQ</label><br><label>Preis : 60 Euro </label></div>
+        <div class="tile-selectable" id="workAutonom2" onclick="selectCar('2')"><img src="AutonomCarImages/t.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Toroidion</label><br><label>Preis : 65 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="AutonomCarImages/maybach2.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : Maybach2</label><br><label>Preis : 90 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/audietron.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : S-Tran</label><br><label>Preis : 80 Euro </label></div>
+        <div class="tile-selectable" id="workAutonom3" onclick="selectCar('3')"><img src="AutonomCarImages/maybach2.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : Maybach2</label><br><label>Preis : 90 Euro </label></div>
+        <div class="tile-selectable" id="workAutonom4" onclick="selectCar('4')"><img src="AutonomCarImages/audietron.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : S-Tran</label><br><label>Preis : 80 Euro </label></div>
         </div>
     </div>
     <div id="workManual" style="visibility: hidden"> 
        <div>
-       <div class="tile-selectable"><img src="ManuelCarImages/vwpassat.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Passat</label><br><label>Preis : 50 Euro </label></div>
-       <div class="tile-selectable"><img src="ManuelCarImages/audirs4.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Audi Rs4</label><br><label>Preis : 55 Euro </label></div>
+       <div class="tile-selectable" id="workManual1" onclick="selectCar('1')"><img src="ManuelCarImages/vwpassat.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Passat</label><br><label>Preis : 50 Euro </label></div>
+       <div class="tile-selectable" id="workManual2" onclick="selectCar('2')"><img src="ManuelCarImages/audirs4.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Audi Rs4</label><br><label>Preis : 55 Euro </label></div>
        </div><div>
-       <div class="tile-selectable"><img src="ManuelCarImages/vwtouran.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Touran </label><br><label>Preis : 55 Euro </label></div>
-       <div class="tile-selectable"><img src="ManuelCarImages/mercedescl500.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Mercedes CL 500</label><br><label>Preis : 70 Euro </label></div>
+       <div class="tile-selectable" id="workManual3" onclick="selectCar('3')"><img src="ManuelCarImages/vwtouran.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Touran </label><br><label>Preis : 55 Euro </label></div>
+       <div class="tile-selectable" id="workManual4" onclick="selectCar('4')"><img src="ManuelCarImages/mercedescl500.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Mercedes CL 500</label><br><label>Preis : 70 Euro </label></div>
        </div>
     </div>
 
     <div id="familyAutonom" style="visibility: hidden">
         <div>
-        <div class="tile-selectable"><img src="AutonomCarImages/vwbudde.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Budd E</label><br><label>Preis : 35 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/bmw4000.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : BMW 4000</label><br><label>Preis : 45 Euro </label></div>
+        <div class="tile-selectable" id="familyAutonom1" onclick="selectCar('1')"><img src="AutonomCarImages/vwbudde.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Budd E</label><br><label>Preis : 35 Euro </label></div>
+        <div class="tile-selectable" id="familyAutonom2" onclick="selectCar('2')"><img src="AutonomCarImages/bmw4000.png"  style="width:400px;height:250px;"><br><label>Bezeichnung : BMW 4000</label><br><label>Preis : 45 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="AutonomCarImages/leseeev.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : LeSEE EV</label><br><label>Preis : 55 Euro </label></div>
-        <div class="tile-selectable"><img src="AutonomCarImages/teslamodels.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Tesla Model S</label><br><label>Preis : 50 Euro </label></div>
+        <div class="tile-selectable" id="familyAutonom3" onclick="selectCar('3')"><img src="AutonomCarImages/leseeev.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : LeSEE EV</label><br><label>Preis : 55 Euro </label></div>
+        <div class="tile-selectable" id="familyAutonom4" onclick="selectCar('4')"><img src="AutonomCarImages/teslamodels.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Tesla Model S</label><br><label>Preis : 50 Euro </label></div>
         </div>
     </div>
     <div id="familyManual" style="visibility: hidden"> 
         <div>
-        <div class="tile-selectable"><img src="ManuelCarImages/vwgolf.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Golf</label><br><label>Preis : 50 Euro </label></div>
-        <div class="tile-selectable"><img src="ManuelCarImages/smart.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Smart</label><br><label>Preis : 30 Euro </label></div>
+        <div class="tile-selectable" id="familyManual1" onclick="selectCar('1')"><img src="ManuelCarImages/vwgolf.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : VW Golf</label><br><label>Preis : 50 Euro </label></div>
+        <div class="tile-selectable" id="familyManual2" onclick="selectCar('2')"><img src="ManuelCarImages/smart.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Smart</label><br><label>Preis : 30 Euro </label></div>
         </div><div>
-        <div class="tile-selectable"><img src="ManuelCarImages/bmw.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : BMW </label><br><label>Preis : 60 Euro </label></div>
-        <div class="tile-selectable"><img src="ManuelCarImages/alfaromeo.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Alfa Romeo</label><br><label>Preis : 55 Euro </label></div>
+        <div class="tile-selectable" id="familyManual3" onclick="selectCar('3')"><img src="ManuelCarImages/bmw.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : BMW </label><br><label>Preis : 60 Euro </label></div>
+        <div class="tile-selectable" id="familyManual4" onclick="selectCar('4')"><img src="ManuelCarImages/alfaromeo.jpg"  style="width:400px;height:250px;"><br><label>Bezeichnung : Alfa Romeo</label><br><label>Preis : 55 Euro </label></div>
         </div>
     </div>
     
     <div id="Zusatzfeatures" style="visibility: hidden">
         <div class="flex-col">
-            <div class="flex-row"></div>
-                <div class="feature-div tile-selectable">Getränkeflat<br>10€/h</div>
-                <div class="feature-div tile-selectable">Barkeeper<br>11€/h</div>
-                <div class="feature-div tile-selectable">Whirlpool<br>7€/h</div>
-            </div>
-            <div class="flex-row">
-                <div class="feature-div tile-selectable">Musikanlage<br>5€/h</div>
-                <div class="feature-div tile-selectable">DJ<br>11€/h</div>
-                <div class="feature-div tile-selectable">Raucheffekte<br>5€/h</div>
-            </div>
-            <div class="flex-row">
-                <div class="feature-div tile-selectable">Tänzerinnen<br>12€/h</div>
-                <div class="feature-div tile-selectable">Buffet<br>7€/h</div>
-                <div class="feature-div tile-selectable">Casintotisch<br>5€/h</div>
-            </div>
-            <div class="flex-col">
-                <div id="ordered_features" class="service-div2" style="min-width:200px; margin-left:5px;">
-                    <p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>
-                    -Discokugel 0€/h
-                </div>
-                <input class="button" type="button" value="Weiter" style="margin-top:-10px;">
-            </div>            
-        </div>
-    </div>
+			<div class="flex-row"></div>
+			<div class="feature-div tile-selectable">Getränkeflat<br>10€/h</div>
+			<div class="feature-div tile-selectable">Barkeeper<br>11€/h</div>
+			<div class="feature-div tile-selectable">Whirlpool<br>7€/h</div>
+		</div>
+		<div class="flex-row">
+			<div class="feature-div tile-selectable">Musikanlage<br>5€/h</div>
+			<div class="feature-div tile-selectable">DJ<br>11€/h</div>
+			<div class="feature-div tile-selectable">Raucheffekte<br>5€/h</div>
+		</div>
+		<div class="flex-row">
+			<div class="feature-div tile-selectable">Tänzerinnen<br>12€/h</div>
+			<div class="feature-div tile-selectable">Buffet<br>7€/h</div>
+			<div class="feature-div tile-selectable">Casintotisch<br>5€/h</div>
+		</div>
+		<div class="flex-col">
+			<div id="ordered_features" class="service-div2" style="min-width:200px; margin-left:5px;">
+				<p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>
+					-Discokugel 0€/h
+			</div>
+			<input class="button" type="button" value="Weiter" style="margin-top:-10px;">
+		</div>            
+	</div>
     
     <div id="Bestellübersicht" style="visibility: hidden">
         <div class="flex-col" style="">
@@ -224,7 +230,7 @@
 				</table>
 			</div>
 			<div>
-				<input class="button" type="button" value="Bestellung absenden" style="float: right;">
+				<input class="button" type="button" value="Bestellung absenden" style="float: right;" onclick="updateState()">
 			</div>
 		</div>
     </div>
