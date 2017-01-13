@@ -52,7 +52,7 @@ function init() {
 
 window.onload = init;
 
-function updateState() {
+function advanceState() {
 	
 	switch(cur_state) {
 		case "Service" :
@@ -72,22 +72,22 @@ function updateState() {
 		case "Fahrzeugwahl" :
 			if(car_mode == "partyBus") {
 				cur_state = "Zusatzfeatures";
-				var cur_features = "";
-				for(let f of features) {
-					cur_features += f + "<br>";
-				}
-				document.getElementById("extras_text").innerHTML = cur_features;
 			} else {
 				cur_state = "Bestellübersicht";
-				document.getElementById("back").style.visibility = "hidden";
+				document.getElementById("extras_text").innerHTML = "";
 			}
 			break;
 		case "Zusatzfeatures" :
 			cur_state = "Bestellübersicht";
-			document.getElementById("back").style.visibility = "hidden";
+			var cur_features = "";
+			for(let f of features) {
+				cur_features += f + "<br>";
+			}
+			document.getElementById("extras_text").innerHTML = cur_features;
 			break;
 		case "Bestellübersicht" :
 			cur_state = "Endübersicht";
+			document.getElementById("back").style.visibility = "hidden";
 			break;
 	}
 	
@@ -108,6 +108,46 @@ function updateState() {
 	}
 }
 
+function resignState() {
+		 states.splice(states.length - 1, 1);
+		 
+		 cur_state = states[states.length -  1];
+		 
+	switch(cur_state) {
+		case "Service" :
+			document.getElementById("back").style.visibility = "hidden";
+			break;
+		case "Ort und Zeit" :
+			car_type = "";
+			break;
+		case "Fahrzeugwahl" :
+			features = ["Discokugel 0€/h"];
+			document.getElementById("ordered_features").innerHTML = "<p style='font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;'>Ausgewählte Zusatzfeatures</p> Discokugel 0€/h";
+		case "Zusatzfeatures" :
+			features = ["Discokugel 0€/h"];
+			break;
+		case "Bestellübersicht" :
+			document.getElementById("back").style.visibility = "visible";
+			break;
+	}
+	
+	 // update the taskbar
+	document.getElementById("taskbar").innerHTML = "";
+	for (let s of states) {
+		if(s != "Endübersicht") {
+			document.getElementById("taskbar").innerHTML += getArrowHTML(s);
+		}
+	}
+	
+	 console.log(cur_state);
+	
+	if(cur_state == "Fahrzeugwahl") {
+		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(car_type + car_mode).innerHTML;
+	} else {
+		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
+	}
+}
+
 function getArrowHTML(new_state) {
 		var arrow_html = "<img src=\"arrows\\";
 		arrow_html += new_state;
@@ -118,12 +158,12 @@ function getArrowHTML(new_state) {
 function updateMode(newMode) {
 	car_mode = newMode;
 	document.getElementById("service_text").innerHTML = car_mode;
-	updateState();
+	advanceState();
 }
 
 function updateCarType(newType) {
 	car_type = newType;
-	updateState();
+	advanceState();
 }
 
 function selectFeature(feature) {
@@ -134,6 +174,7 @@ function selectFeature(feature) {
 		document.getElementById(feature).style.borderColor = "blue";
 		features.splice(features.indexOf(feature), 1);
 	}
+	
 	var cur_features = "";
 	for(let f of features) {
 		cur_features += f + "<br>";
@@ -152,7 +193,7 @@ function selectCar(number) {
 	document.getElementById(car_type + car_mode + number).style.borderColor = "red";
 	if(!buttonShown) {
 		document.getElementById("continueCarSelection").style.visibility = "visible";
-		document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + document.getElementById("continueCarSelection").innerHTML;
+		document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + "<div>" + document.getElementById("continueCarSelection").innerHTML + "</div>";
 	}
 }
 
