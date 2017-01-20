@@ -246,6 +246,7 @@ function getArrowHTML(new_state, selected) {
 function updateMode(newMode) {
 	car_mode = newMode;
 	document.getElementById("service_text").innerHTML = car_mode;
+	car_type = "";
 	advanceState();
 }
 
