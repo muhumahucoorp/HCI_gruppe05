@@ -21,7 +21,7 @@
 		<div class="main" class="flex-col"></div>
 		<button id="back" type="button" class="button" onclick="resignState()">Zurück</button>
 	</div>
-	<input type="button" value="Weiter" class="button" style="margin-right:450px;float:right;" onclick="advanceState()">
+	<input type="button" id="weiter" value="Weiter" class="button" style="margin-right:450px;float:right;" onclick="advanceState()">
 	
     <!-- Dynamic GUI elements are saved here and used on their GUI state -->
     
@@ -30,7 +30,7 @@
             <div id = autonom class="service-div1 tile-selectable" onclick="updateMode('Autonom')"> <img src="autonom2.jpg" alt="" /> </div>
             <div id= manual class="service-div1 tile-selectable" onclick="updateMode('Manual')"> <img src="manuell2.png" alt="" /> </div>
         </div>
-        <div id= party class="service-div2 tile-selectable" onclick="updateMode('partyBus')">	<img src="party2.jpg" alt="" />		</div>
+        <div id=party class="service-div2 tile-selectable" onclick="updateMode('partyBus')">	<img src="party2.jpg" alt="" />	</div>
     </div>
     
     <div id= "Ort und Zeit" style="visibility: hidden">
@@ -74,10 +74,6 @@
     </div> 
     
     <!-- Fahrzeugwahl -->
-    <div id="continueCarSelection" style="visibility: hidden">
-        <br>
-        <input class="button" type="button" value="Weiter" style="font-size: 15px; float: right;" onclick="advanceState()">
-    </div>
     
     <div id="partyBus" style="visibility: hidden">
         <div>

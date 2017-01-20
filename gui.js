@@ -48,6 +48,7 @@ function init() {
 	car_mode = "";
 	document.getElementById("taskbar").innerHTML = getArrowHTML(states, true);
 	document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
+	document.getElementById("weiter").style.visibility = "hidden";
 }
 
 window.onload = init;
@@ -58,23 +59,28 @@ function advanceState() {
 		case "Service" :
 			cur_state = "Ort und Zeit";
 			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "visible";
 			break;
 		case "Ort und Zeit" :
 			if(car_mode == "partyBus") {
 				cur_state = "Fahrzeugwahl";
+				document.getElementById("weiter").style.visibility = "hidden";
 			} else {
 				cur_state = "Fahrzeugtyp";
 			}
 			break;
 		case "Fahrzeugtyp" :
 			cur_state = "Fahrzeugwahl";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Fahrzeugwahl" :
 			if(car_mode == "partyBus") {
 				cur_state = "Zusatzfeatures";
+				document.getElementById("back").style.visibility = "hidden";
 			} else {
 				cur_state = "Bestellübersicht";
 				document.getElementById("extras_text").innerHTML = "";
+				document.getElementById("back").style.visibility = "hidden";
 			}
 			break;
 		case "Zusatzfeatures" :
@@ -84,6 +90,7 @@ function advanceState() {
 				cur_features += f + "<br>";
 			}
 			document.getElementById("extras_text").innerHTML = cur_features;
+			document.getElementById("back").style.visibility = "hidden";
 			break;
 		case "Bestellübersicht" :
 			cur_state = "Endübersicht";
@@ -121,15 +128,19 @@ function selectState(new_state) {
 	switch(cur_state) {
 		case "Service" :
 			document.getElementById("back").style.visibility = "hidden";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Ort und Zeit" :
 			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "visible";
 			break;
 		case "Fahrzeugtyp" :
 			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Fahrzeugwahl" :
 			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Zusatzfeatures" :
 			document.getElementById("back").style.visibility = "visible";
@@ -138,6 +149,7 @@ function selectState(new_state) {
 			break;
 		case "Bestellübersicht" :
 			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Endübersicht" :
 			var cur_features = "";
@@ -146,6 +158,7 @@ function selectState(new_state) {
 			}
 			document.getElementById("extras_text").innerHTML = cur_features;
 			document.getElementById("back").style.visibility = "hidden";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 	}
 	
@@ -175,9 +188,11 @@ function resignState() {
 	switch(cur_state) {
 		case "Service" :
 			document.getElementById("back").style.visibility = "hidden";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Ort und Zeit" :
 			car_type = "";
+			document.getElementById("weiter").style.visibility = "visible";
 			break;
 		case "Fahrzeugwahl" :
 			features = ["Discokugel 0€/h"];
@@ -187,6 +202,7 @@ function resignState() {
 			break;
 		case "Bestellübersicht" :
 			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 	}
 	
@@ -259,18 +275,7 @@ function selectCar(number) {
 	}
 	document.getElementById(car_type + car_mode + number).style.borderColor = "red";
 	if(!buttonShown) {
-		document.getElementById("continueCarSelection").style.visibility = "visible";
+		document.getElementById("weiter").style.visibility = "visible";
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + "<div>" + document.getElementById("continueCarSelection").innerHTML + "</div>";
 	}
 }
-
-/*function updateOrderView(response) {
-	document.getElementById("service_text").innerHTML = response.service;
-	document.getElementById("time_departure").innerHTML = response.time_departure;
-	document.getElementById("time_arrival").innerHTML = response.time_arrival;
-	document.getElementById("place_departure").innerHTML = response.loc_departure;
-	document.getElementById("place_arrival").innerHTML = response.loc_arrival;
-	document.getElementById("car_text").innerHTML = response.car;
-	document.getElementById("extras_text").innerHTML = response.extra;
-	document.getElementById("price").innerHTML = response.price;
-}*/
