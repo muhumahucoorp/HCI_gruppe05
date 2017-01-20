@@ -14,6 +14,37 @@ h1 {
     margin-bottom: 25px;
 }
 
+#autonom img {
+	
+	width: 500px; /* or any custom size */
+    height: 250px; 
+    
+	
+}
+
+#manual img {
+	width: 500px; /* or any custom size */
+    height: 250px; 
+    
+	
+	
+	
+}
+
+#party {
+	
+	
+}
+
+#party img {
+	
+	width: 500px; /* or any custom size */
+    height: 520px; 
+    
+	
+	
+}
+
 .header {
 	display: flex;
 	position: relative;
