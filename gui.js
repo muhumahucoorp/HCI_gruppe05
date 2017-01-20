@@ -77,10 +77,12 @@ function advanceState() {
 			if(car_mode == "partyBus") {
 				cur_state = "Zusatzfeatures";
 				document.getElementById("back").style.visibility = "hidden";
+				document.getElementById("weiter").style.visibility = "visible";
 			} else {
 				cur_state = "Bestellübersicht";
 				document.getElementById("extras_text").innerHTML = "";
 				document.getElementById("back").style.visibility = "hidden";
+				document.getElementById("weiter").style.visibility = "hidden";
 			}
 			break;
 		case "Zusatzfeatures" :
@@ -91,10 +93,12 @@ function advanceState() {
 			}
 			document.getElementById("extras_text").innerHTML = cur_features;
 			document.getElementById("back").style.visibility = "hidden";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Bestellübersicht" :
 			cur_state = "Endübersicht";
 			document.getElementById("back").style.visibility = "hidden";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 	}
 	
@@ -144,6 +148,7 @@ function selectState(new_state) {
 			break;
 		case "Zusatzfeatures" :
 			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "visible";
 			features = ["Discokugel 0€/h"];
 			document.getElementById("ordered_features").innerHTML = "<p style='font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;'>Ausgewählte Zusatzfeatures</p> Discokugel 0€/h";
 			break;
