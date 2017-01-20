@@ -35,33 +35,32 @@
 
     </div>
     
-    <div id= "Ort und Zeit" style="visibility: hidden">
+	<div id= "Ort und Zeit" style="visibility: hidden">
         <div class="flex-col">
-            <div style= "display: flex; position: relative; flex-direction: column; flex-wrap: nowrap;">
+            <div style= "margin: 5px; border: 6px blue; border-style: groove; border-radius: 8px; display: flex; position: relative; flex-direction: column; flex-wrap: nowrap;">
                 <div id="zeitraum" style="height: 140px; width: 1000px; display: flex; align-items: center;">
                     <label id="zeitLabel" style = "font-size: 30px;">Zeitraum
-                        <input value="Datum" style="text-align: center; margin-left: 300px;">
-                        <input value="Zeit" style="text-align: center; margin-left: 50px;">      
-                        <button type="button" style = "margin-left: 50px;">~</button>
+                        <input type="text" id= "datepicker" placeholder="Datum" style="text-align: center; margin-left: 300px;">
+                        <input type= "text "placeholder="Zeit" style="text-align: center; margin-left: 50px;">      
+                        <button type="button" class= "" style = "margin-left: 100px;" onclick=""></button>
                     </label>
-                </div>
-                
+                </div>            
                 <div id="startpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">
                     <label id="startLabel" style = "font-size: 30px;">Startpunkt
-                        <input value="Stadt" style="text-align: center; margin-left: 285px;">
-                        <input value="Straße" style="text-align: center; margin-left: 50px;">
-                        <button type="button" style="margin-left: 50px;">0</button>
+                        <input placeholder="Stadt" style="text-align: center; margin-left: 285px;">
+                        <input placeholder="Straße" style="text-align: center; margin-left: 50px;">
+                        <button type="button" class= "gps" style="margin-left: 100px;"></button>
                     </label>
                 </div>
                 
                 <div id="zielpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">
                     <label id="zielLabel" style = "font-size: 30px;">Zielpunkt
-                        <input value="Stadt" style="text-align: center; margin-left: 300px;">
-                        <input value="Straße" style="text-align: center; margin-left: 50px;">
-                        <button type="button" style= "margin-left: 50px;">X</button>
+                        <input placeholder="Stadt" style="text-align: center; margin-left: 295px;">
+                        <input placeholder="Straße" style="text-align: center; margin-left: 50px;">
+                        <button type="button" class= "gps" style= "margin-left: 100px;"></button>
                     </label>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
     
