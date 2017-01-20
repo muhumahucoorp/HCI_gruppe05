@@ -21,6 +21,7 @@
 		<div class="main" class="flex-col"></div>
 		<button id="back" type="button" class="button" onclick="resignState()">Zurück</button>
 	</div>
+	<input type="button" id="weiter" value="Weiter" class="button" style="margin-right:450px;float:right;visibility:hidden;" onclick="advanceState()">
 	
     <!-- Dynamic GUI elements are saved here and used on their GUI state -->
     
@@ -29,7 +30,9 @@
             <div id = autonom class="service-div1 tile-selectable" onclick="updateMode('Autonom')"> <img src="ServicePics/autonom2.jpg" alt="" /> </div>
             <div id= manual class="service-div1 tile-selectable" onclick="updateMode('Manual')"> <img src="ServicePics/manuell2.png" alt="" /> </div>
         </div>
+
         <div id= party class="service-div2 tile-selectable" onclick="updateMode('partyBus')">	<img src="ServicePics/party2.jpg" alt="" />		</div>
+
     </div>
     
     <div id= "Ort und Zeit" style="visibility: hidden">
@@ -58,8 +61,7 @@
                         <button type="button" style= "margin-left: 50px;">X</button>
                     </label>
                 </div>
-            </div>
-            <input type="button" value="Weiter" class="button" style="margin-top:50px;margin-left:850px;float:right;" onclick="advanceState()">
+            </div>    
         </div>
     </div>
     
@@ -74,10 +76,6 @@
     </div> 
     
     <!-- Fahrzeugwahl -->
-    <div id="continueCarSelection" style="visibility: hidden">
-        <br>
-        <input class="button" type="button" value="Weiter" style="font-size: 15px; float: right;" onclick="advanceState()">
-    </div>
     
     <div id="partyBus" style="visibility: hidden">
         <div>
@@ -188,7 +186,6 @@
 				<p style="font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;">Ausgewählte Zusatzfeatures</p>
 					-Discokugel 0€/h
 			</div>
-			<input class="button" type="button" value="Weiter" style="margin-top:-10px;" onclick="advanceState()">
 		</div>            
 	</div>
     
