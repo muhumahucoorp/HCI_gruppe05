@@ -97,7 +97,7 @@ function advanceState() {
 			break;
 		case "Bestellübersicht" :
 			cur_state = "Endübersicht";
-			document.getElementById("back").style.visibility = "hidden";
+			document.getElementById("back").style.visibility = "visible";
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 	}
