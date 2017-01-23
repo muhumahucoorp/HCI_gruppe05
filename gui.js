@@ -285,3 +285,43 @@ function selectCar(number) {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + "<div>" + document.getElementById("continueCarSelection").innerHTML + "</div>";
 	}
 }
+
+function getGPSStart() {
+	
+	if (document.getElementById("zielStadt").value == "Hannover") document.getElementById("zielStadt").value = "";
+	if (document.getElementById("zielStraße").value == "Appelstraße 4") document.getElementById("zielStraße").value = "";
+	
+	document.getElementById("startStadt").value = "Hannover";
+	document.getElementById("startStraße").value = "Appelstraße 4";
+}
+
+function getGPSZiel() {
+	
+	if (document.getElementById("startStadt").value == "Hannover") document.getElementById("startStadt").value = "";
+	if (document.getElementById("startStraße").value == "Appelstraße 4") document.getElementById("startStraße").value = "";
+	
+	document.getElementById("zielStadt").value = "Hannover";
+	document.getElementById("zielStraße").value = "Appelstraße 4";
+}
+
+function getTimeAndDate() {
+	
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+		dd='0'+dd
+	} 
+
+	if(mm<10) {
+		mm='0'+mm
+	} 
+
+	today = dd+'/'+mm+'/'+yyyy;
+	document.getElementById("date").value = today;
+	
+	var time = new Date().toLocaleTimeString('de-DE', { hour12: false, hour: "numeric", minute: "numeric"});
+	document.getElementById("time").value = time;
+}
