@@ -123,6 +123,10 @@ function advanceState() {
 	} else {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	}
+    
+    $( function() {
+        $( "#date" ).datepicker();
+    } );
 }
 
 function selectState(new_state) {
