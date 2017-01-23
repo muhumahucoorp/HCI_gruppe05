@@ -125,7 +125,7 @@ function advanceState() {
 	}
     
     $( function() {
-        $( "#date" ).datepicker();
+        $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
     } );
 }
 
@@ -184,7 +184,7 @@ function selectState(new_state) {
 	}
     
     $( function() {
-        $( "#datepicker" ).datepicker();
+        $( "#date" ).datepicker();
     } );
 }
 
