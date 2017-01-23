@@ -182,6 +182,10 @@ function selectState(new_state) {
 	} else {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	}
+    
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
 }
 
 function resignState() {
