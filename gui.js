@@ -139,8 +139,8 @@ function advanceState() {
 	}
 
     $( function() {
-        $("#date").datepicker({ dateFormat: 'dd/mm/yy' });
         $( "#time" ).timepicker( { 'timeFormat': 'H:i', 'step': 15} );
+        $( "#date" ).datepicker( { 'dateFormat': 'dd/mm/yy' }) ;
     } );
 }
 
@@ -197,14 +197,10 @@ function selectState(new_state) {
 	} else {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	}
-	
-	$( function() {
-		$( "#date" ).datepicker();
-	} );
-    
+	   
     $( function() {
-        $("#date").datepicker({ dateFormat: 'dd/mm/yy' });
         $( "#time" ).timepicker( { 'timeFormat': 'H:i', 'step': 15} );
+        $( "#date" ).datepicker( { 'dateFormat': 'dd/mm/yy' }) ;
     } );
 }
 
@@ -254,7 +250,7 @@ function resignState() {
 	}
     
     $( function() {
-        $("#date").datepicker({ dateFormat: 'dd/mm/yy' });
+        $( "#date" ).datepicker( { 'dateFormat': 'dd/mm/yy' } );
         $( "#time" ).timepicker( { 'timeFormat': 'H:i', 'step': 15} );
     } );
 }
@@ -264,7 +260,7 @@ function getArrowHTML(new_state, selected) {
 		arrow_html += new_state;
 		arrow_html += ".png\" class=\"arrow\" onclick=\"selectState(\'" + new_state + "\')\"";
 		if(selected == true) {
-			arrow_html += " style=\'border-style: solid; border-color: red;\'";
+			arrow_html += " style=\"-webkit-filter: drop-shadow(1px 1px 0 #1D30A9) drop-shadow(-1px -1px 0 #1D30A9); filter: drop-shadow(5px 5px 0 red) drop-shadow(-5px -5px 0 red);\"";
 		}
 		arrow_html += ">";
 		return arrow_html;

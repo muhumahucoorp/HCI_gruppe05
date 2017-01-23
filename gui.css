@@ -112,7 +112,10 @@ h1 {
 }
 
 .arrow:active {
-    box-shadow: 0 0 10px 4px #1D30A9, inset 0 0px 10px #1D30A9;
+   -webkit-filter: drop-shadow(1px 1px 0 #1D30A9)
+                   drop-shadow(-1px -1px 0 #1D30A9);
+   filter: drop-shadow(5px 5px 0 #1D30A9) 
+           drop-shadow(-5px -5px 0 #1D30A9);
 }
 
 #logo {
