@@ -61,7 +61,7 @@ function advanceState() {
 		case "Service" :
 			cur_state = "Ort und Zeit";
 			document.getElementById("back").style.visibility = "visible";
-			document.getElementById("weiter").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Ort und Zeit" :
 			if(car_mode == "Partybus") {
@@ -134,7 +134,7 @@ function selectState(new_state) {
 			break;
 		case "Ort und Zeit" :
 			document.getElementById("back").style.visibility = "visible";
-			document.getElementById("weiter").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Fahrzeugtyp" :
 			document.getElementById("back").style.visibility = "visible";
@@ -192,7 +192,7 @@ function resignState() {
 			break;
 		case "Ort und Zeit" :
 			car_type = "";
-			document.getElementById("weiter").style.visibility = "visible";
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Fahrzeugwahl" :
 			features = ["Discokugel 0€/h"];
@@ -333,4 +333,15 @@ function getTimeAndDate() {
 	
 	var time = new Date().toLocaleTimeString('de-DE', { hour12: false, hour: "numeric", minute: "numeric"});
 	document.getElementById("time").value = time;
+}
+
+function inputChanged() {
+	if (document.getElementById("time").value == ""
+	 || document.getElementById("date").value == ""
+	 || document.getElementById("startStadt").value == ""
+	 || document.getElementById("startStraße").value == ""
+	 || document.getElementById("zielStadt").value == ""
+	 || document.getElementById("zielStraße").value == "")
+		document.getElementById("weiter").style.visibility = "hidden";
+	else document.getElementById("weiter").style.visibility = "visible";
 }

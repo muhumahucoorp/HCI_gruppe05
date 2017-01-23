@@ -48,23 +48,23 @@
             <div style= "margin: 5px; border: 6px blue; border-style: groove; border-radius: 8px; display: flex; position: relative; flex-direction: column; flex-wrap: nowrap;">
                 <div id="zeitraum" style="height: 130px; width: 1000px; display: flex; align-items: center;">
                     <label id="zeitLabel" style = "font-size: 30px;">Zeitraum
-                        <input type="text" id="date" name="date" placeholder="Datum" style="text-align: center; margin-left: 300px;">
-                        <input type= "text" id="time" placeholder="Zeit" style="text-align: center; margin-left: 50px;">      
+                        <input type="text" id="date" name="date" placeholder="Datum" onchange= "inputChanged()" style="text-align: center; margin-left: 300px;">
+                        <input type= "text" id="time" placeholder="Zeit" onchange= "inputChanged()" style="text-align: center; margin-left: 50px;">      
                         <button type="button" class= "now" style = "margin-left: 100px;" onclick="getTimeAndDate()"></button>
                     </label>
                 </div>            
                 <div id="startpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">
                     <label id="startLabel" style = "font-size: 30px;">Startpunkt
-                        <input id="startStadt" placeholder="Stadt" style="text-align: center; margin-left: 285px;">
-                        <input id="startStraße" placeholder="Straße" style="text-align: center; margin-left: 50px;">
+                        <input id="startStadt" placeholder="Stadt" onchange= "inputChanged()" style="text-align: center; margin-left: 285px;">
+                        <input id="startStraße" placeholder="Straße" onchange= "inputChanged()" style="text-align: center; margin-left: 50px;">
                         <button type="button" class= "gps" onclick="getGPSStart()" style="margin-left: 100px;"></button>
                     </label>
                 </div>
                 
                 <div id="zielpunkt" style="height: 130px; width: 1000px; display: flex; align-items: center;">
                     <label id="zielLabel" style = "font-size: 30px;">Zielpunkt
-                        <input id="zielStadt" placeholder="Stadt" style="text-align: center; margin-left: 295px;">
-                        <input id="zielStraße" placeholder="Straße" style="text-align: center; margin-left: 50px;">
+                        <input id="zielStadt" placeholder="Stadt" onchange= "inputChanged()" style="text-align: center; margin-left: 295px;">
+                        <input id="zielStraße" placeholder="Straße" onchange= "inputChanged()" style="text-align: center; margin-left: 50px;">
                         <button type="button" class= "gps" onclick="getGPSZiel()" style= "margin-left: 100px;"></button>
                     </label>
                 </div>

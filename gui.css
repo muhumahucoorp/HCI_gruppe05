@@ -109,7 +109,6 @@ h1 {
 .arrow {
     width: 200px; 
     height: 50px; 
-    background-image: url("arrow.png");
 }
 
 .arrow:active {
@@ -174,5 +173,5 @@ h1 {
 
 .combobox {
 	background-color:white;
-	background-image:url(select-arrow.png);
+
 }
