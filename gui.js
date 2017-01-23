@@ -125,7 +125,8 @@ function advanceState() {
 	}
     
     $( function() {
-        $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
+        $("#date").datepicker({ dateFormat: 'dd/mm/yy' });
+        $( "#time" ).timepicker( { 'timeFormat': 'H:i', 'step': 15} );
     } );
 }
 
