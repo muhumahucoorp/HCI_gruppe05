@@ -38,6 +38,7 @@ var features = ["Discokugel 0€/h"];
 var cur_state = "Service";
 var car_type = "";
 var car_mode = "";
+var car_number = 0;
 var selectedCarDivName;
 
 function init() {
@@ -46,6 +47,7 @@ function init() {
 	cur_state = "Service";
 	car_type = "";
 	car_mode = "";
+	var car_number = 0;
 	document.getElementById("taskbar").innerHTML = getArrowHTML(states, true);
 	document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	document.getElementById("weiter").style.visibility = "hidden";
@@ -62,7 +64,7 @@ function advanceState() {
 			document.getElementById("weiter").style.visibility = "visible";
 			break;
 		case "Ort und Zeit" :
-			if(car_mode == "partyBus") {
+			if(car_mode == "Partybus") {
 				cur_state = "Fahrzeugwahl";
 			} else {
 				cur_state = "Fahrzeugtyp";
@@ -74,24 +76,20 @@ function advanceState() {
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Fahrzeugwahl" :
-			if(car_mode == "partyBus") {
+			if(car_mode == "Partybus") {
 				cur_state = "Zusatzfeatures";
 				document.getElementById("back").style.visibility = "visbile";
 				document.getElementById("weiter").style.visibility = "visible";
 			} else {
 				cur_state = "Bestellübersicht";
-				document.getElementById("extras_text").innerHTML = "";
+				setOrderingOverview();
 				document.getElementById("back").style.visibility = "visible";
 				document.getElementById("weiter").style.visibility = "hidden";
 			}
 			break;
 		case "Zusatzfeatures" :
 			cur_state = "Bestellübersicht";
-			var cur_features = "";
-			for(let f of features) {
-				cur_features += f + "<br>";
-			}
-			document.getElementById("extras_text").innerHTML = cur_features;
+			setOrderingOverview();
 			document.getElementById("back").style.visibility = "visbile";
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
@@ -153,15 +151,12 @@ function selectState(new_state) {
 			document.getElementById("ordered_features").innerHTML = "<p style='font-family:Arial,sans-serif; font-size:18px; margin-left:5px;text-decoration:underline;'>Ausgewählte Zusatzfeatures</p> Discokugel 0€/h";
 			break;
 		case "Bestellübersicht" :
+			setOrderingOverview();
 			document.getElementById("back").style.visibility = "visible";
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Endübersicht" :
 			var cur_features = "";
-			for(let f of features) {
-				cur_features += f + "<br>";
-			}
-			document.getElementById("extras_text").innerHTML = cur_features;
 			document.getElementById("back").style.visibility = "hidden";
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
@@ -206,6 +201,7 @@ function resignState() {
 			features = ["Discokugel 0€/h"];
 			break;
 		case "Bestellübersicht" :
+			setOrderingOverview();
 			document.getElementById("back").style.visibility = "visible";
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
@@ -222,8 +218,6 @@ function resignState() {
 			}
 		}
 	}
-	
-	 console.log(cur_state);
 	
 	if(cur_state == "Fahrzeugwahl") {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(car_type + car_mode).innerHTML;
@@ -245,7 +239,6 @@ function getArrowHTML(new_state, selected) {
 
 function updateMode(newMode) {
 	car_mode = newMode;
-	document.getElementById("service_text").innerHTML = car_mode;
 	car_type = "";
 	advanceState();
 }
@@ -263,7 +256,6 @@ function selectFeature(feature) {
 		document.getElementById(feature).style.borderColor = "blue";
 		features.splice(features.indexOf(feature), 1);
 	}
-	
 	var cur_features = "";
 	for(let f of features) {
 		cur_features += f + "<br>";
@@ -272,6 +264,7 @@ function selectFeature(feature) {
 }
 
 function selectCar(number) {
+	car_number = number;
 	var buttonShown = false;
 	for(i=1; i<=4; i++) {
 		if(document.getElementById(car_type + car_mode + i).style.borderColor == "red") {
@@ -279,11 +272,27 @@ function selectCar(number) {
 		}
 		document.getElementById(car_type + car_mode + i).style.borderColor = "blue";
 	}
-	document.getElementById(car_type + car_mode + number).style.borderColor = "red";
-	console.log(document.getElementById(car_type + car_mode + number).car);
+	document.getElementById(car_type + car_mode + car_number).style.borderColor = "red";
 	if(!buttonShown) {
 		document.getElementById("weiter").style.visibility = "visible";
 	}
+}
+
+function setOrderingOverview() {
+	document.getElementById("service_text").innerHTML = car_mode;
+	document.getElementById("car_text").innerHTML = document.getElementById(car_type + car_mode + car_number).getAttribute("car");
+	var price = parseInt(document.getElementById(car_type + car_mode + car_number).getAttribute("price"));
+	var cur_features = "";
+	if(car_mode == "Partybus") {
+		for(let f of features) {
+			cur_features += f + "<br>";
+			if(f != "Discokugel 0€/h") {
+				price += parseInt(document.getElementById(f).getAttribute("price"));
+			}
+		}
+	}
+	document.getElementById("extras_text").innerHTML = cur_features;
+	document.getElementById("price").innerHTML = price;
 }
 
 function getGPSStart() {
