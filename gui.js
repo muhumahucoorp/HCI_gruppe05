@@ -201,6 +201,11 @@ function selectState(new_state) {
 	$( function() {
 		$( "#date" ).datepicker();
 	} );
+    
+    $( function() {
+        $("#date").datepicker({ dateFormat: 'dd/mm/yy' });
+        $( "#time" ).timepicker( { 'timeFormat': 'H:i', 'step': 15} );
+    } );
 }
 
 function resignState() {
@@ -247,6 +252,11 @@ function resignState() {
 	} else {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	}
+    
+    $( function() {
+        $("#date").datepicker({ dateFormat: 'dd/mm/yy' });
+        $( "#time" ).timepicker( { 'timeFormat': 'H:i', 'step': 15} );
+    } );
 }
 
 function getArrowHTML(new_state, selected) {
