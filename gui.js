@@ -39,6 +39,14 @@ var cur_state = "Service";
 var car_type = "";
 var car_mode = "";
 var car_number = 0;
+
+var time = "";
+var date = "";
+var dep_city = "";
+var dep_street = "";
+var arr_city = "";
+var arr_street = "";
+
 var selectedCarDivName;
 
 function init() {
@@ -47,7 +55,13 @@ function init() {
 	cur_state = "Service";
 	car_type = "";
 	car_mode = "";
-	var car_number = 0;
+	time = "";
+	date = "";
+	dep_city = "";
+	dep_street = "";
+	arr_city = "";
+	arr_street = "";
+	car_number = 0;
 	document.getElementById("taskbar").innerHTML = getArrowHTML(states, true);
 	document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	document.getElementById("weiter").style.visibility = "hidden";
@@ -123,10 +137,10 @@ function advanceState() {
 	} else {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	}
-    
-    $( function() {
-        $( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
-    } );
+	
+	$( function() {
+		$( "#date" ).datepicker({ dateFormat: 'dd/mm/yy' });
+	} );
 }
 
 function selectState(new_state) {
@@ -182,10 +196,10 @@ function selectState(new_state) {
 	} else {
 		document.getElementsByClassName('main')[0].innerHTML = document.getElementById(cur_state).innerHTML;
 	}
-    
-    $( function() {
-        $( "#date" ).datepicker();
-    } );
+	
+	$( function() {
+		$( "#date" ).datepicker();
+	} );
 }
 
 function resignState() {
@@ -289,6 +303,9 @@ function selectCar(number) {
 function setOrderingOverview() {
 	document.getElementById("service_text").innerHTML = car_mode;
 	document.getElementById("car_text").innerHTML = document.getElementById(car_type + car_mode + car_number).getAttribute("car");
+	document.getElementById("time_departure").innerHTML = date + ", " + time;
+	document.getElementById("place_departure").innerHTML = dep_street + ", " + dep_city;
+	document.getElementById("place_arrival").innerHTML = arr_street + ", " + arr_city;
 	var price = parseInt(document.getElementById(car_type + car_mode + car_number).getAttribute("price"));
 	var cur_features = "";
 	if(car_mode == "Partybus") {
@@ -303,22 +320,68 @@ function setOrderingOverview() {
 	document.getElementById("price").innerHTML = price;
 }
 
+function setDate() {
+	date = document.getElementById("date").value;
+	inputChanged();
+}
+
+function setTime() {
+	time = document.getElementById("time").value;
+	inputChanged();
+}
+
+function setDepCity() {
+	dep_city = document.getElementById("startStadt").value;
+	inputChanged();
+}
+
+function setDepStreet() {
+	dep_street = document.getElementById("startStraße").value;
+	inputChanged();
+}
+
+function setArrCity() {
+	arr_city = document.getElementById("zielStadt").value;
+	inputChanged();
+}
+
+function setArrStreet() {
+	arr_street = document.getElementById("zielStraße").value;
+	inputChanged();
+}
+
 function getGPSStart() {
 	
-	if (document.getElementById("zielStadt").value == "Hannover") document.getElementById("zielStadt").value = "";
-	if (document.getElementById("zielStraße").value == "Appelstraße 4") document.getElementById("zielStraße").value = "";
+	if (document.getElementById("zielStadt").value == "Hannover")  {
+		document.getElementById("zielStadt").value = "";
+		arr_city = "";
+	}
+	if (document.getElementById("zielStraße").value == "Appelstraße 4") {
+		document.getElementById("zielStraße").value = "";
+		arr_street = "";
+	}
 	
 	document.getElementById("startStadt").value = "Hannover";
+	dep_city = "Hannover";
 	document.getElementById("startStraße").value = "Appelstraße 4";
+	dep_street = "Appelstraße 4";
 }
 
 function getGPSZiel() {
 	
-	if (document.getElementById("startStadt").value == "Hannover") document.getElementById("startStadt").value = "";
-	if (document.getElementById("startStraße").value == "Appelstraße 4") document.getElementById("startStraße").value = "";
+	if (document.getElementById("startStadt").value == "Hannover") {
+		document.getElementById("startStadt").value = "";
+		dep_city = "";
+	}
+	if (document.getElementById("startStraße").value == "Appelstraße 4") {
+		document.getElementById("startStraße").value = "";
+		dep_street = "";
+	}
 	
 	document.getElementById("zielStadt").value = "Hannover";
+	arr_city = "Hannover";
 	document.getElementById("zielStraße").value = "Appelstraße 4";
+	arr_street = "Appelstraße 4";
 }
 
 function getTimeAndDate() {
@@ -341,6 +404,9 @@ function getTimeAndDate() {
 	
 	var time = new Date().toLocaleTimeString('de-DE', { hour12: false, hour: "numeric", minute: "numeric"});
 	document.getElementById("time").value = time;
+	
+	setDate();
+	setTime();
 }
 
 function inputChanged() {
