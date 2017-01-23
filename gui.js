@@ -64,10 +64,10 @@ function advanceState() {
 		case "Ort und Zeit" :
 			if(car_mode == "partyBus") {
 				cur_state = "Fahrzeugwahl";
-				document.getElementById("weiter").style.visibility = "hidden";
 			} else {
 				cur_state = "Fahrzeugtyp";
 			}
+			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Fahrzeugtyp" :
 			cur_state = "Fahrzeugwahl";
@@ -76,12 +76,12 @@ function advanceState() {
 		case "Fahrzeugwahl" :
 			if(car_mode == "partyBus") {
 				cur_state = "Zusatzfeatures";
-				document.getElementById("back").style.visibility = "hidden";
+				document.getElementById("back").style.visibility = "visbile";
 				document.getElementById("weiter").style.visibility = "visible";
 			} else {
 				cur_state = "Bestellübersicht";
 				document.getElementById("extras_text").innerHTML = "";
-				document.getElementById("back").style.visibility = "hidden";
+				document.getElementById("back").style.visibility = "visible";
 				document.getElementById("weiter").style.visibility = "hidden";
 			}
 			break;
@@ -92,12 +92,12 @@ function advanceState() {
 				cur_features += f + "<br>";
 			}
 			document.getElementById("extras_text").innerHTML = cur_features;
-			document.getElementById("back").style.visibility = "hidden";
+			document.getElementById("back").style.visibility = "visbile";
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 		case "Bestellübersicht" :
 			cur_state = "Endübersicht";
-			document.getElementById("back").style.visibility = "visible";
+			document.getElementById("back").style.visibility = "hidden";
 			document.getElementById("weiter").style.visibility = "hidden";
 			break;
 	}
@@ -280,9 +280,9 @@ function selectCar(number) {
 		document.getElementById(car_type + car_mode + i).style.borderColor = "blue";
 	}
 	document.getElementById(car_type + car_mode + number).style.borderColor = "red";
+	console.log(document.getElementById(car_type + car_mode + number).car);
 	if(!buttonShown) {
 		document.getElementById("weiter").style.visibility = "visible";
-		document.getElementsByClassName('main')[0].innerHTML = document.getElementsByClassName('main')[0].innerHTML + "<div>" + document.getElementById("continueCarSelection").innerHTML + "</div>";
 	}
 }
 
